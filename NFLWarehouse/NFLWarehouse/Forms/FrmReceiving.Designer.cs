@@ -39,7 +39,7 @@ namespace NFLWarehouse.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.checkedListBoxValidations = new System.Windows.Forms.CheckedListBox();
             this.labelInstruction1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxTote = new System.Windows.Forms.TextBox();
             this.labelInstruction2 = new System.Windows.Forms.Label();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -48,6 +48,7 @@ namespace NFLWarehouse.Forms
             this.labelHostName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -111,10 +112,11 @@ namespace NFLWarehouse.Forms
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.buttonClear);
             this.panel2.Controls.Add(this.labelHostName);
             this.panel2.Controls.Add(this.buttonConfirm);
             this.panel2.Controls.Add(this.labelInstruction2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.textBoxTote);
             this.panel2.Controls.Add(this.labelInstruction1);
             this.panel2.Controls.Add(this.checkedListBoxValidations);
             this.panel2.Controls.Add(this.labelProcessName);
@@ -168,13 +170,13 @@ namespace NFLWarehouse.Forms
             this.labelInstruction1.TabIndex = 2;
             this.labelInstruction1.Text = "Instruction 1";
             // 
-            // textBox1
+            // textBoxTote
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(30, 140);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(815, 53);
-            this.textBox1.TabIndex = 3;
+            this.textBoxTote.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTote.Location = new System.Drawing.Point(30, 140);
+            this.textBoxTote.Name = "textBoxTote";
+            this.textBoxTote.Size = new System.Drawing.Size(815, 53);
+            this.textBoxTote.TabIndex = 3;
             // 
             // labelInstruction2
             // 
@@ -262,6 +264,20 @@ namespace NFLWarehouse.Forms
             this.panel5.Size = new System.Drawing.Size(877, 57);
             this.panel5.TabIndex = 5;
             // 
+            // buttonClear
+            // 
+            this.buttonClear.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonClear.FlatAppearance.BorderSize = 0;
+            this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClear.Location = new System.Drawing.Point(21, 303);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(260, 98);
+            this.buttonClear.TabIndex = 7;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
             // FrmReceiving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -299,7 +315,7 @@ namespace NFLWarehouse.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox checkedListBoxValidations;
         private System.Windows.Forms.Label labelInstruction1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxTote;
         private System.Windows.Forms.Label labelInstruction2;
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.Panel panel4;
@@ -308,5 +324,6 @@ namespace NFLWarehouse.Forms
         private System.Windows.Forms.Label labelHostName;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.Button buttonClear;
     }
 }

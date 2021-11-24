@@ -56,10 +56,37 @@ namespace NFLWarehouse.Forms
 
         }
 
-       
+        #region Logic
         public void ValidationPassed(int index)
         {
             checkedListBoxValidations.SetItemChecked(index, true);
         }
+        #endregion
+
+
+        #region Actions
+        public void clearFormAction()
+        {
+            textBoxTote.Clear();
+
+            checkedListBoxValidations.SetItemChecked(0, false);
+            checkedListBoxValidations.SetItemChecked(1, false);
+            checkedListBoxValidations.SetItemChecked(2, false);
+        }
+        #endregion
+
+
+        #region Controls
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            clearFormAction();
+        }
+        #endregion
+
+
+
+
+
+
     }
 }
