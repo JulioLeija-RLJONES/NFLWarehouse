@@ -43,18 +43,24 @@ namespace NFLWarehouse.Forms
             this.checkedListBoxValidations = new System.Windows.Forms.CheckedListBox();
             this.labelProcessName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.labelToolName = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.labelVersion = new System.Windows.Forms.Label();
             this.prompt = new System.Windows.Forms.RichTextBox();
             this.textBoxLocation = new System.Windows.Forms.TextBox();
+            this.pictureWindowMinimize = new System.Windows.Forms.PictureBox();
+            this.pictureWindowNormal = new System.Windows.Forms.PictureBox();
+            this.pictureWindowClose = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -206,6 +212,9 @@ namespace NFLWarehouse.Forms
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.pictureWindowMinimize);
+            this.panel4.Controls.Add(this.pictureWindowNormal);
+            this.panel4.Controls.Add(this.pictureWindowClose);
             this.panel4.Controls.Add(this.pictureBoxLogo);
             this.panel4.Controls.Add(this.labelToolName);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -213,16 +222,6 @@ namespace NFLWarehouse.Forms
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(967, 44);
             this.panel4.TabIndex = 4;
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Image = global::NFLWarehouse.Properties.Resources.unbrela;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(3, 2);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(40, 37);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogo.TabIndex = 1;
-            this.pictureBoxLogo.TabStop = false;
             // 
             // labelToolName
             // 
@@ -277,6 +276,49 @@ namespace NFLWarehouse.Forms
             this.textBoxLocation.Size = new System.Drawing.Size(376, 53);
             this.textBoxLocation.TabIndex = 8;
             // 
+            // pictureWindowMinimize
+            // 
+            this.pictureWindowMinimize.Image = global::NFLWarehouse.Properties.Resources.minimize_1;
+            this.pictureWindowMinimize.Location = new System.Drawing.Point(832, 4);
+            this.pictureWindowMinimize.Name = "pictureWindowMinimize";
+            this.pictureWindowMinimize.Size = new System.Drawing.Size(40, 37);
+            this.pictureWindowMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureWindowMinimize.TabIndex = 4;
+            this.pictureWindowMinimize.TabStop = false;
+            this.pictureWindowMinimize.Click += new System.EventHandler(this.pictureWindowMinimize_Click);
+            // 
+            // pictureWindowNormal
+            // 
+            this.pictureWindowNormal.Image = global::NFLWarehouse.Properties.Resources.maximize;
+            this.pictureWindowNormal.Location = new System.Drawing.Point(876, 4);
+            this.pictureWindowNormal.Name = "pictureWindowNormal";
+            this.pictureWindowNormal.Size = new System.Drawing.Size(40, 37);
+            this.pictureWindowNormal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureWindowNormal.TabIndex = 3;
+            this.pictureWindowNormal.TabStop = false;
+            this.pictureWindowNormal.Click += new System.EventHandler(this.pictureWindowNormal_Click);
+            // 
+            // pictureWindowClose
+            // 
+            this.pictureWindowClose.Image = global::NFLWarehouse.Properties.Resources.close_1;
+            this.pictureWindowClose.Location = new System.Drawing.Point(920, 4);
+            this.pictureWindowClose.Name = "pictureWindowClose";
+            this.pictureWindowClose.Size = new System.Drawing.Size(40, 37);
+            this.pictureWindowClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureWindowClose.TabIndex = 2;
+            this.pictureWindowClose.TabStop = false;
+            this.pictureWindowClose.Click += new System.EventHandler(this.pictureWindowClose_Click);
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Image = global::NFLWarehouse.Properties.Resources.unbrela;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(3, 2);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(40, 37);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 1;
+            this.pictureBoxLogo.TabStop = false;
+            // 
             // FrmScanIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -295,9 +337,12 @@ namespace NFLWarehouse.Forms
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -323,5 +368,8 @@ namespace NFLWarehouse.Forms
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.RichTextBox prompt;
         private System.Windows.Forms.TextBox textBoxLocation;
+        private System.Windows.Forms.PictureBox pictureWindowMinimize;
+        private System.Windows.Forms.PictureBox pictureWindowNormal;
+        private System.Windows.Forms.PictureBox pictureWindowClose;
     }
 }

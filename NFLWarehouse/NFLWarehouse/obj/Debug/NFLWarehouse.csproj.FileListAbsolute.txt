@@ -26,3 +26,4 @@ C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLW
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.pdb
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmReceiving.resources
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmScanIn.resources
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmScanout.resources

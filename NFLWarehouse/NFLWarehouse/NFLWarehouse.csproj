@@ -105,6 +105,12 @@
     <Compile Include="Forms\FrmScanIn.Designer.cs">
       <DependentUpon>FrmScanIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmScanout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmScanout.Designer.cs">
+      <DependentUpon>FrmScanout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FrmReceiving.resx">
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmScanIn.resx">
       <DependentUpon>FrmScanIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmScanout.resx">
+      <DependentUpon>FrmScanout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -154,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="icons\minimize_1.png" />
+    <None Include="icons\maximize.png" />
+    <None Include="icons\close_1.png" />
     <None Include="Resources\unbrela.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

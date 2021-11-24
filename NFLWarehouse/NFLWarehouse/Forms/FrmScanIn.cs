@@ -75,6 +75,27 @@ namespace NFLWarehouse.Forms
                 labelVersion.Text = "verison: Debug Mode";
             }
         }
+        private void pictureWindowClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void pictureWindowNormal_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+        private void pictureWindowMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
         #endregion
+
+
     }
 }
