@@ -246,7 +246,7 @@ namespace NFLWarehouse.Forms
             this.labelVersion.AutoSize = true;
             this.labelVersion.BackColor = System.Drawing.Color.Black;
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelVersion.Location = new System.Drawing.Point(779, -1);
+            this.labelVersion.Location = new System.Drawing.Point(776, -1);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(56, 17);
             this.labelVersion.TabIndex = 2;

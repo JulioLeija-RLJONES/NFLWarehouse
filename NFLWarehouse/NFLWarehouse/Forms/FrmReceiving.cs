@@ -45,7 +45,7 @@ namespace NFLWarehouse.Forms
             labelHostName.Text = "Working from: " + this.hostname;
             if (!Tools.isDebugMode())
             {
-                labelVersion.Text = "verison: " + "Version: " +
+                labelVersion.Text = "verison: " +
                 System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
             }
             else
