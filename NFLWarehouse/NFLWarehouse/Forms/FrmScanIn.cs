@@ -18,8 +18,8 @@ namespace NFLWarehouse.Forms
 
         #region Global Variables
         private string toolName = "NFL Warehouse";
-        private string stationName = "NFL Receiving";
-        private string processName = "Receiving";
+        private string stationName = "Scan In Station";
+        private string processName = "Scan In";
         private string instruction1 = "Scan Tote Number";
         private string instruction2 = "To confirm receipt, double scan the Tote QR code or press Confirm.";
         private string hostname = Dns.GetHostName();
@@ -55,7 +55,7 @@ namespace NFLWarehouse.Forms
         {
             this.Text = toolName + " " + stationName;
             labelToolName.Text = this.toolName;
-            labelProcessName.Text = this.processName;
+            labelProcessName.Text = this.stationName;
             labelInstruction1.Text = this.instruction1;
             labelInstruction2.Text = this.instruction2;
             labelHostName.Text = "Working from: " + this.hostname;
