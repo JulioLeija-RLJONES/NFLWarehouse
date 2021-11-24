@@ -29,6 +29,7 @@ namespace NFLWarehouse.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmScanIn));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelTemporal = new System.Windows.Forms.Label();
@@ -283,6 +284,7 @@ namespace NFLWarehouse.Forms
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1081, 590);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmScanIn";
             this.Text = "FrmScanIn";
             this.Load += new System.EventHandler(this.FrmScanIn_Load);
