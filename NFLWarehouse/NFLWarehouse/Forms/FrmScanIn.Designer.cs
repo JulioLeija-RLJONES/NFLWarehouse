@@ -146,7 +146,7 @@ namespace NFLWarehouse.Forms
             this.buttonConfirm.FlatAppearance.BorderSize = 0;
             this.buttonConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirm.Location = new System.Drawing.Point(612, 339);
+            this.buttonConfirm.Location = new System.Drawing.Point(700, 339);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(260, 98);
             this.buttonConfirm.TabIndex = 5;
@@ -170,7 +170,7 @@ namespace NFLWarehouse.Forms
             this.textBoxTote.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTote.Location = new System.Drawing.Point(30, 134);
             this.textBoxTote.Name = "textBoxTote";
-            this.textBoxTote.Size = new System.Drawing.Size(842, 53);
+            this.textBoxTote.Size = new System.Drawing.Size(930, 53);
             this.textBoxTote.TabIndex = 3;
             // 
             // labelInstruction1
@@ -194,7 +194,7 @@ namespace NFLWarehouse.Forms
             "Validation 1",
             "Validation 2",
             "Validation 3"});
-            this.checkedListBoxValidations.Location = new System.Drawing.Point(772, 75);
+            this.checkedListBoxValidations.Location = new System.Drawing.Point(857, 74);
             this.checkedListBoxValidations.Name = "checkedListBoxValidations";
             this.checkedListBoxValidations.Size = new System.Drawing.Size(103, 68);
             this.checkedListBoxValidations.TabIndex = 1;
@@ -222,6 +222,9 @@ namespace NFLWarehouse.Forms
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(967, 44);
             this.panel4.TabIndex = 4;
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
+            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
+            this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseUp);
             // 
             // labelToolName
             // 
@@ -233,6 +236,9 @@ namespace NFLWarehouse.Forms
             this.labelToolName.Size = new System.Drawing.Size(108, 25);
             this.labelToolName.TabIndex = 0;
             this.labelToolName.Text = "Tool Name";
+            this.labelToolName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseDown);
+            this.labelToolName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseMove);
+            this.labelToolName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseUp);
             // 
             // panel5
             // 
@@ -273,7 +279,7 @@ namespace NFLWarehouse.Forms
             this.textBoxLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLocation.Location = new System.Drawing.Point(29, 270);
             this.textBoxLocation.Name = "textBoxLocation";
-            this.textBoxLocation.Size = new System.Drawing.Size(376, 53);
+            this.textBoxLocation.Size = new System.Drawing.Size(433, 53);
             this.textBoxLocation.TabIndex = 8;
             // 
             // pictureWindowMinimize
@@ -318,6 +324,9 @@ namespace NFLWarehouse.Forms
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogo.TabIndex = 1;
             this.pictureBoxLogo.TabStop = false;
+            this.pictureBoxLogo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxLogo_MouseDown);
+            this.pictureBoxLogo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxLogo_MouseMove);
+            this.pictureBoxLogo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxLogo_MouseUp);
             // 
             // FrmScanIn
             // 
@@ -326,6 +335,7 @@ namespace NFLWarehouse.Forms
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1081, 590);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmScanIn";
             this.Text = "FrmScanIn";

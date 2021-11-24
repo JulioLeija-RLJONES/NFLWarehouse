@@ -94,8 +94,96 @@ namespace NFLWarehouse.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        #endregion
+
+        #region Window Movement
+        Boolean Moveform;
+        Point Moveform_MousePosition;
+        private void pictureBoxLogo_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Moveform = false;
+                this.Cursor = Cursors.Default;
+            }
+        }
+        private void labelToolName_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Moveform = false;
+                this.Cursor = Cursors.Default;
+            }
+        }
+        private void panel4_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Moveform = false;
+                this.Cursor = Cursors.Default;
+            }
+        }
+        private void pictureBoxLogo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Moveform = true;
+                this.Cursor = Cursors.NoMove2D;
+                Moveform_MousePosition = e.Location;
+            }
+        }
+        private void labelToolName_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Moveform = true;
+                this.Cursor = Cursors.NoMove2D;
+                Moveform_MousePosition = e.Location;
+            }
+        }
+        private void panel4_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Moveform = true;
+                this.Cursor = Cursors.NoMove2D;
+                Moveform_MousePosition = e.Location;
+            }
+        }
+
+        private void pictureBoxLogo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Moveform)
+            {
+                this.Location = new Point(this.Location.X + (e.Location.X - Moveform_MousePosition.X),
+                                          this.Location.Y + (e.Location.Y - Moveform_MousePosition.Y));
+            }
+        }
+        private void labelToolName_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Moveform)
+            {
+                this.Location = new Point(this.Location.X + (e.Location.X - Moveform_MousePosition.X),
+                                          this.Location.Y + (e.Location.Y - Moveform_MousePosition.Y));
+            }
+        }
+        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Moveform)
+            {
+                this.Location = new Point(this.Location.X + (e.Location.X - Moveform_MousePosition.X),
+                                          this.Location.Y + (e.Location.Y - Moveform_MousePosition.Y));
+            }
+        }
+
+
         #endregion
 
 
+
+
+
+       
     }
 }
