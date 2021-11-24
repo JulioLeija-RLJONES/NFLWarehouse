@@ -11,3 +11,17 @@ C:\Users\jleija\source\repos\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.ex
 C:\Users\jleija\source\repos\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.application
 C:\Users\jleija\source\repos\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.exe
 C:\Users\jleija\source\repos\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.pdb
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\NFLWarehouse.exe.config
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\NFLWarehouse.exe.manifest
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\NFLWarehouse.application
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\NFLWarehouse.exe
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\NFLWarehouse.pdb
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.csproj.AssemblyReference.cache
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Properties.Resources.resources
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.csproj.GenerateResource.cache
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.csproj.CoreCompileInputs.cache
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.exe.manifest
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.application
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.exe
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.pdb
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmReceiving.resources
