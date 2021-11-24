@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="NFLWarehouse.exe" version="1.0.0.11" publicKeyToken="dc99625336e10da7" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="NFLWarehouse" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="NFLWarehouse.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NFLWarehouse.exe" size="662456">
+      <assemblyIdentity name="NFLWarehouse" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>bPQ1a6ZfO0AAWH4oNGIzBYkmqDcVV9FpdJm4J5W4EFI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="favicon.ico" size="161862">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Kr/hd2axeu4tNdTB6oBYRitkVp4goZ7YAXyApYc5fQ4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="NFLWarehouse.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=RLJONES\jleija" issuerKeyHash="f93896782aef93f1d9f940c4cdf5ff3f45347fd4" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>BY7dq5Ya6yaIGSl+m4/w+lI8Yaf2Chx2Hl9ajD8QGn0=</DigestValue></Reference></SignedInfo><SignatureValue>GHU66c8IJAOx1n9NJtsac67i/dcP46YSN3+b6qnkkuRhueQHvWO9BEZV3UfXpgA05MN8sNZKlItsdvZP0g2DTmVVlldnmeEVyUQXcvOb94PNIWNw9PgOo2N03T4SoOkzAM047z/HgX2eQ40BdVf9laNndBxCXOgkox9RglzY0zc=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>ywE9vFwY9dSNdC0PYQDV8io2cQ9o4+FO6kXIB/fXXh/L0ZTVGB0Z5NIGLseAIfVjgmASIjfyf8WZBnFSXlTIZwyI1HvvGb+KYp9AX6S3i8gOROe8rDMKmKibgmEVZwap0iwPuZPVLpX1AimkgojEWku5wr37hN76dS3xERYWVjU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="7d1a103f8c5a5f1e761c0af6a7613c52faf08f9b7e29198826eb1a96abdd8e05" Description="" Url=""><as:assemblyIdentity name="NFLWarehouse.exe" version="1.0.0.11" publicKeyToken="dc99625336e10da7" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=RLJONES\jleija</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Y/7tjr7soSN8LgW0daRiWY9cr7iebN+y8+QRS1EjZTw=</DigestValue></Reference></SignedInfo><SignatureValue>rjQ9NImFQpwa4/4+I4ZsY53oUrRowXJ8hK0ztTX0U8EFF8bVXf0zXqgVN85dN12QyxG+TYOohTehGza6ftR8FnOApp9x0BVF69hA+AhxpeiWwOmP9sSmbTT36R86nkhz9UArIL3MAFNpg06YuzkoiQXmhDsYBnyU1Wcvb8eYyIU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>ywE9vFwY9dSNdC0PYQDV8io2cQ9o4+FO6kXIB/fXXh/L0ZTVGB0Z5NIGLseAIfVjgmASIjfyf8WZBnFSXlTIZwyI1HvvGb+KYp9AX6S3i8gOROe8rDMKmKibgmEVZwap0iwPuZPVLpX1AimkgojEWku5wr37hN76dS3xERYWVjU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB0TCCATqgAwIBAgIQTC9pQx1BjrZM4T66hwBHJzANBgkqhkiG9w0BAQsFADAnMSUwIwYDVQQDHhwAUgBMAEoATwBOAEUAUwBcAGoAbABlAGkAagBhMB4XDTIxMTEyNDE5MTgwNVoXDTIyMTEyNTAxMTgwNVowJzElMCMGA1UEAx4cAFIATABKAE8ATgBFAFMAXABqAGwAZQBpAGoAYTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAywE9vFwY9dSNdC0PYQDV8io2cQ9o4+FO6kXIB/fXXh/L0ZTVGB0Z5NIGLseAIfVjgmASIjfyf8WZBnFSXlTIZwyI1HvvGb+KYp9AX6S3i8gOROe8rDMKmKibgmEVZwap0iwPuZPVLpX1AimkgojEWku5wr37hN76dS3xERYWVjUCAwEAATANBgkqhkiG9w0BAQsFAAOBgQA8HtRr1/89dwaQDGHWMIaPX5RDt/MvxNKUAW3gGYXyyuZ8LHoXc1sJAY2dsrMhcsxS2XYVrW/YtQtJ6qwZWcRrO/+hKbJUy7VEYt6NBbFzLrYJHj6Y4Eyh/Rec4pI6SIY+RoeXyo6LKLWfs+a0ZVhu+8J8wsknnWa3kkGtPf5BVw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

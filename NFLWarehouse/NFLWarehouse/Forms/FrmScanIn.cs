@@ -20,8 +20,8 @@ namespace NFLWarehouse.Forms
         private string toolName = "NFL Warehouse";
         private string stationName = "Scan In Station";
         private string processName = "Scan In";
-        private string instruction1 = "Scan Tote Number";
-        private string instruction2 = "To confirm receipt, double scan the Tote QR code or press Confirm.";
+        private string instruction1 = "1 Scan Tote Number";
+        private string instruction2 = "2 Scan the location barcode where the item is being stored";
         private string hostname = Dns.GetHostName();
         private Color titleColor = Color.Yellow;
         #endregion
