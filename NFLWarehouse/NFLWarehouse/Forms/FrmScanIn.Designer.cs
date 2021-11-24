@@ -31,7 +31,7 @@ namespace NFLWarehouse.Forms
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTemporal = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonClear = new System.Windows.Forms.Button();
             this.labelHostName = new System.Windows.Forms.Label();
@@ -76,22 +76,22 @@ namespace NFLWarehouse.Forms
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.labelTemporal);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(883, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(102, 44);
             this.panel3.TabIndex = 3;
             // 
-            // label1
+            // labelTemporal
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(0, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Temporal Section";
+            this.labelTemporal.AutoSize = true;
+            this.labelTemporal.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelTemporal.Location = new System.Drawing.Point(0, 6);
+            this.labelTemporal.Name = "labelTemporal";
+            this.labelTemporal.Size = new System.Drawing.Size(119, 17);
+            this.labelTemporal.TabIndex = 0;
+            this.labelTemporal.Text = "Temporal Section";
             // 
             // panel2
             // 
@@ -149,7 +149,7 @@ namespace NFLWarehouse.Forms
             this.labelInstruction2.AutoSize = true;
             this.labelInstruction2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInstruction2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelInstruction2.Location = new System.Drawing.Point(25, 205);
+            this.labelInstruction2.Location = new System.Drawing.Point(26, 226);
             this.labelInstruction2.Name = "labelInstruction2";
             this.labelInstruction2.Size = new System.Drawing.Size(141, 29);
             this.labelInstruction2.TabIndex = 4;
@@ -158,7 +158,7 @@ namespace NFLWarehouse.Forms
             // textBoxTote
             // 
             this.textBoxTote.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTote.Location = new System.Drawing.Point(30, 140);
+            this.textBoxTote.Location = new System.Drawing.Point(30, 163);
             this.textBoxTote.Name = "textBoxTote";
             this.textBoxTote.Size = new System.Drawing.Size(842, 53);
             this.textBoxTote.TabIndex = 3;
@@ -168,7 +168,7 @@ namespace NFLWarehouse.Forms
             this.labelInstruction1.AutoSize = true;
             this.labelInstruction1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInstruction1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelInstruction1.Location = new System.Drawing.Point(23, 86);
+            this.labelInstruction1.Location = new System.Drawing.Point(23, 100);
             this.labelInstruction1.Name = "labelInstruction1";
             this.labelInstruction1.Size = new System.Drawing.Size(194, 38);
             this.labelInstruction1.TabIndex = 2;
@@ -184,7 +184,7 @@ namespace NFLWarehouse.Forms
             "Validation 1",
             "Validation 2",
             "Validation 3"});
-            this.checkedListBoxValidations.Location = new System.Drawing.Point(772, 66);
+            this.checkedListBoxValidations.Location = new System.Drawing.Point(772, 89);
             this.checkedListBoxValidations.Name = "checkedListBoxValidations";
             this.checkedListBoxValidations.Size = new System.Drawing.Size(103, 68);
             this.checkedListBoxValidations.TabIndex = 1;
@@ -192,11 +192,11 @@ namespace NFLWarehouse.Forms
             // labelProcessName
             // 
             this.labelProcessName.AutoSize = true;
-            this.labelProcessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProcessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProcessName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelProcessName.Location = new System.Drawing.Point(15, 16);
+            this.labelProcessName.Location = new System.Drawing.Point(13, -8);
             this.labelProcessName.Name = "labelProcessName";
-            this.labelProcessName.Size = new System.Drawing.Size(208, 36);
+            this.labelProcessName.Size = new System.Drawing.Size(561, 91);
             this.labelProcessName.TabIndex = 0;
             this.labelProcessName.Text = "Process Name";
             // 
@@ -293,7 +293,7 @@ namespace NFLWarehouse.Forms
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTemporal;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Label labelHostName;

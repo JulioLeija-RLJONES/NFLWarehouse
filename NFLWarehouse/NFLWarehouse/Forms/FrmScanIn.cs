@@ -23,6 +23,7 @@ namespace NFLWarehouse.Forms
         private string instruction1 = "Scan Tote Number";
         private string instruction2 = "To confirm receipt, double scan the Tote QR code or press Confirm.";
         private string hostname = Dns.GetHostName();
+        private Color titleColor = Color.Yellow;
         #endregion
 
 
@@ -43,6 +44,10 @@ namespace NFLWarehouse.Forms
         #endregion
 
         #region Cosmetics
+        public void CustomizeTitle()
+        {
+            this.labelProcessName.ForeColor = titleColor;
+        }
         #endregion
 
         #region Controls
@@ -53,6 +58,7 @@ namespace NFLWarehouse.Forms
         }
         public void initForm()
         {
+            CustomizeTitle();
             this.Text = toolName + " " + stationName;
             labelToolName.Text = this.toolName;
             labelProcessName.Text = this.stationName;
