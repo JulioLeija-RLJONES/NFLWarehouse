@@ -7,26 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NFLWarehouse.Classes;
 using System.Net;
+using NFLWarehouse.Classes;
 
 namespace NFLWarehouse.Forms
 {
-    public partial class FrmReceiving : Form
+
+    public partial class FrmScanIn : Form
     {
+
+        #region Global Variables
         private string toolName = "NFL Warehouse";
         private string stationName = "NFL Receiving";
         private string processName = "Receiving";
         private string instruction1 = "Scan Tote Number";
         private string instruction2 = "To confirm receipt, double scan the Tote QR code or press Confirm.";
         private string hostname = Dns.GetHostName();
+        #endregion
 
-        public FrmReceiving()
+
+        public FrmScanIn()
         {
             InitializeComponent();
         }
 
-        
 
         #region Logic
         public void ValidationPassed(int index)
@@ -35,33 +39,20 @@ namespace NFLWarehouse.Forms
         }
         #endregion
 
-
         #region Actions
-        public void clearFormAction()
-        {
-            textBoxTote.Clear();
-
-            checkedListBoxValidations.SetItemChecked(0, false);
-            checkedListBoxValidations.SetItemChecked(1, false);
-            checkedListBoxValidations.SetItemChecked(2, false);
-        }
         #endregion
 
+        #region Cosmetics
+        #endregion
 
         #region Controls
-        private void FrmReceiving_Load(object sender, EventArgs e)
+        private void FrmScanIn_Load(object sender, EventArgs e)
         {
             initForm();
             MsgTypes.printme(MsgTypes.msg_success, "Ready", this);
         }
-
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            clearFormAction();
-        }
         public void initForm()
         {
-
             this.Text = toolName + " " + stationName;
             labelToolName.Text = this.toolName;
             labelProcessName.Text = this.processName;
@@ -77,20 +68,7 @@ namespace NFLWarehouse.Forms
             {
                 labelVersion.Text = "verison: Debug Mode";
             }
-
-
         }
-
-
         #endregion
-
-
-
-
-
-
-
-
-
     }
 }

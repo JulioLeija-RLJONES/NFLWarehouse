@@ -17,7 +17,7 @@ namespace NFLWarehouse
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmReceiving());
+            Application.Run(new FrmScanIn());
         }
     }
 }
