@@ -94,7 +94,33 @@ namespace NFLWarehouse.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        private void textBoxTote_Enter(object sender, EventArgs e)
+        {
+            SetColorTextBoxSelected((TextBox) sender);
+        }
+        private void textBoxLocation_Enter(object sender, EventArgs e)
+        {
+            SetColorTextBoxSelected((TextBox) sender);
+        }
+        private void textBoxTote_Leave(object sender, EventArgs e)
+        {
+            SetColorTextBoxReleased((TextBox)sender);
+        }
 
+        private void textBoxLocation_Leave(object sender, EventArgs e)
+        {
+            SetColorTextBoxReleased((TextBox)sender);
+            
+        }
+
+        private void SetColorTextBoxSelected(TextBox t)
+        {
+            t.BackColor = Color.Lime;
+        }
+        private void SetColorTextBoxReleased(TextBox t)
+        {
+            t.BackColor = SystemColors.Window;
+        }
         #endregion
 
         #region Window Movement
@@ -178,12 +204,9 @@ namespace NFLWarehouse.Forms
         }
 
 
+
+
         #endregion
 
-
-
-
-
-       
     }
 }

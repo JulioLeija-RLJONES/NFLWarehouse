@@ -172,6 +172,8 @@ namespace NFLWarehouse.Forms
             this.textBoxTote.Name = "textBoxTote";
             this.textBoxTote.Size = new System.Drawing.Size(930, 53);
             this.textBoxTote.TabIndex = 3;
+            this.textBoxTote.Enter += new System.EventHandler(this.textBoxTote_Enter);
+            this.textBoxTote.Leave += new System.EventHandler(this.textBoxTote_Leave);
             // 
             // labelInstruction1
             // 
@@ -281,6 +283,8 @@ namespace NFLWarehouse.Forms
             this.textBoxLocation.Name = "textBoxLocation";
             this.textBoxLocation.Size = new System.Drawing.Size(433, 53);
             this.textBoxLocation.TabIndex = 8;
+            this.textBoxLocation.Enter += new System.EventHandler(this.textBoxLocation_Enter);
+            this.textBoxLocation.Leave += new System.EventHandler(this.textBoxLocation_Leave);
             // 
             // pictureWindowMinimize
             // 
