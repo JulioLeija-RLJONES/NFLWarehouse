@@ -33,6 +33,7 @@ namespace NFLWarehouse.Forms
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxLocation = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.labelHostName = new System.Windows.Forms.Label();
             this.buttonConfirm = new System.Windows.Forms.Button();
@@ -42,23 +43,22 @@ namespace NFLWarehouse.Forms
             this.checkedListBoxValidations = new System.Windows.Forms.CheckedListBox();
             this.labelProcessName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.labelToolName = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.labelVersion = new System.Windows.Forms.Label();
-            this.prompt = new System.Windows.Forms.RichTextBox();
-            this.textBoxLocation = new System.Windows.Forms.TextBox();
             this.pictureWindowMinimize = new System.Windows.Forms.PictureBox();
             this.pictureWindowNormal = new System.Windows.Forms.PictureBox();
             this.pictureWindowClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.labelToolName = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.prompt = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -104,6 +104,16 @@ namespace NFLWarehouse.Forms
             this.panel2.Size = new System.Drawing.Size(1060, 466);
             this.panel2.TabIndex = 2;
             // 
+            // textBoxLocation
+            // 
+            this.textBoxLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxLocation.Location = new System.Drawing.Point(29, 270);
+            this.textBoxLocation.Name = "textBoxLocation";
+            this.textBoxLocation.Size = new System.Drawing.Size(433, 53);
+            this.textBoxLocation.TabIndex = 2;
+            this.textBoxLocation.Enter += new System.EventHandler(this.textBoxLocation_Enter);
+            this.textBoxLocation.Leave += new System.EventHandler(this.textBoxLocation_Leave);
+            // 
             // buttonClear
             // 
             this.buttonClear.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -148,7 +158,7 @@ namespace NFLWarehouse.Forms
             this.labelInstruction2.Location = new System.Drawing.Point(23, 215);
             this.labelInstruction2.MaximumSize = new System.Drawing.Size(1000, 0);
             this.labelInstruction2.Name = "labelInstruction2";
-            this.labelInstruction2.Size = new System.Drawing.Size(202, 39);
+            this.labelInstruction2.Size = new System.Drawing.Size(194, 38);
             this.labelInstruction2.TabIndex = 4;
             this.labelInstruction2.Text = "Instruction 2";
             // 
@@ -218,65 +228,6 @@ namespace NFLWarehouse.Forms
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
             this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseUp);
             // 
-            // labelToolName
-            // 
-            this.labelToolName.AutoSize = true;
-            this.labelToolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelToolName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelToolName.Location = new System.Drawing.Point(46, 9);
-            this.labelToolName.Name = "labelToolName";
-            this.labelToolName.Size = new System.Drawing.Size(108, 25);
-            this.labelToolName.TabIndex = 0;
-            this.labelToolName.Text = "Tool Name";
-            this.labelToolName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseDown);
-            this.labelToolName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseMove);
-            this.labelToolName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseUp);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.labelVersion);
-            this.panel5.Controls.Add(this.prompt);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 525);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1060, 62);
-            this.panel5.TabIndex = 5;
-            // 
-            // labelVersion
-            // 
-            this.labelVersion.AutoSize = true;
-            this.labelVersion.BackColor = System.Drawing.Color.Black;
-            this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelVersion.Location = new System.Drawing.Point(958, 3);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(56, 17);
-            this.labelVersion.TabIndex = 2;
-            this.labelVersion.Text = "Version";
-            // 
-            // prompt
-            // 
-            this.prompt.BackColor = System.Drawing.Color.Black;
-            this.prompt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.prompt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prompt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prompt.ForeColor = System.Drawing.Color.Lime;
-            this.prompt.Location = new System.Drawing.Point(0, 0);
-            this.prompt.Name = "prompt";
-            this.prompt.Size = new System.Drawing.Size(1060, 62);
-            this.prompt.TabIndex = 1;
-            this.prompt.TabStop = false;
-            this.prompt.Text = "";
-            // 
-            // textBoxLocation
-            // 
-            this.textBoxLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxLocation.Location = new System.Drawing.Point(29, 270);
-            this.textBoxLocation.Name = "textBoxLocation";
-            this.textBoxLocation.Size = new System.Drawing.Size(433, 53);
-            this.textBoxLocation.TabIndex = 2;
-            this.textBoxLocation.Enter += new System.EventHandler(this.textBoxLocation_Enter);
-            this.textBoxLocation.Leave += new System.EventHandler(this.textBoxLocation_Leave);
-            // 
             // pictureWindowMinimize
             // 
             this.pictureWindowMinimize.Image = global::NFLWarehouse.Properties.Resources.minimize_1;
@@ -323,6 +274,55 @@ namespace NFLWarehouse.Forms
             this.pictureBoxLogo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxLogo_MouseMove);
             this.pictureBoxLogo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxLogo_MouseUp);
             // 
+            // labelToolName
+            // 
+            this.labelToolName.AutoSize = true;
+            this.labelToolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelToolName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelToolName.Location = new System.Drawing.Point(46, 9);
+            this.labelToolName.Name = "labelToolName";
+            this.labelToolName.Size = new System.Drawing.Size(108, 25);
+            this.labelToolName.TabIndex = 0;
+            this.labelToolName.Text = "Tool Name";
+            this.labelToolName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseDown);
+            this.labelToolName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseMove);
+            this.labelToolName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.labelToolName_MouseUp);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.labelVersion);
+            this.panel5.Controls.Add(this.prompt);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 525);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1060, 62);
+            this.panel5.TabIndex = 5;
+            // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.BackColor = System.Drawing.Color.Black;
+            this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelVersion.Location = new System.Drawing.Point(941, -1);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(106, 17);
+            this.labelVersion.TabIndex = 2;
+            this.labelVersion.Text = "Version: Debug";
+            // 
+            // prompt
+            // 
+            this.prompt.BackColor = System.Drawing.Color.Black;
+            this.prompt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.prompt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.prompt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prompt.ForeColor = System.Drawing.Color.Lime;
+            this.prompt.Location = new System.Drawing.Point(0, 0);
+            this.prompt.Name = "prompt";
+            this.prompt.Size = new System.Drawing.Size(1060, 62);
+            this.prompt.TabIndex = 1;
+            this.prompt.TabStop = false;
+            this.prompt.Text = "";
+            // 
             // FrmScanIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -340,12 +340,12 @@ namespace NFLWarehouse.Forms
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }

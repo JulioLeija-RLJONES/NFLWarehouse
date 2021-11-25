@@ -55,6 +55,7 @@ namespace NFLWarehouse.Forms
         {
             initForm();
             MsgTypes.printme(MsgTypes.msg_success, "Ready", this);
+            MsgTypes.printme(MsgTypes.msg_success, "Address: " + Tools.GetLocalIPAddress(),this);
         }
         public void initForm()
         {
@@ -72,7 +73,7 @@ namespace NFLWarehouse.Forms
             }
             else
             {
-                labelVersion.Text = "verison: Debug Mode";
+                labelVersion.Text = "verison: Debug";
             }
         }
         private void pictureWindowClose_Click(object sender, EventArgs e)
@@ -98,13 +99,13 @@ namespace NFLWarehouse.Forms
         {
             SetColorTextBoxSelected((TextBox) sender);
         }
-        private void textBoxLocation_Enter(object sender, EventArgs e)
-        {
-            SetColorTextBoxSelected((TextBox) sender);
-        }
         private void textBoxTote_Leave(object sender, EventArgs e)
         {
             SetColorTextBoxReleased((TextBox)sender);
+        }
+        private void textBoxLocation_Enter(object sender, EventArgs e)
+        {
+            SetColorTextBoxSelected((TextBox) sender);
         }
 
         private void textBoxLocation_Leave(object sender, EventArgs e)
@@ -177,7 +178,6 @@ namespace NFLWarehouse.Forms
                 Moveform_MousePosition = e.Location;
             }
         }
-
         private void pictureBoxLogo_MouseMove(object sender, MouseEventArgs e)
         {
             if (Moveform)
@@ -202,10 +202,6 @@ namespace NFLWarehouse.Forms
                                           this.Location.Y + (e.Location.Y - Moveform_MousePosition.Y));
             }
         }
-
-
-
-
         #endregion
 
     }

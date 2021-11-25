@@ -27,3 +27,12 @@ C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLW
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmReceiving.resources
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmScanIn.resources
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmScanout.resources
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Security.AccessControl.dll
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Security.Permissions.dll
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Security.AccessControl.xml
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Security.Permissions.xml
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.csproj.CopyComplete
