@@ -65,7 +65,7 @@ namespace NFLWarehouse.Forms
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 0);
@@ -83,9 +83,9 @@ namespace NFLWarehouse.Forms
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(1057, 3);
+            this.panel3.Location = new System.Drawing.Point(1069, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(21, 44);
+            this.panel3.Size = new System.Drawing.Size(9, 44);
             this.panel3.TabIndex = 3;
             // 
             // panel2
@@ -101,7 +101,7 @@ namespace NFLWarehouse.Forms
             this.panel2.Controls.Add(this.labelProcessName);
             this.panel2.Location = new System.Drawing.Point(3, 53);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1048, 466);
+            this.panel2.Size = new System.Drawing.Size(1060, 466);
             this.panel2.TabIndex = 2;
             // 
             // buttonClear
@@ -133,7 +133,7 @@ namespace NFLWarehouse.Forms
             this.buttonConfirm.FlatAppearance.BorderSize = 0;
             this.buttonConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirm.Location = new System.Drawing.Point(700, 339);
+            this.buttonConfirm.Location = new System.Drawing.Point(786, 339);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(260, 98);
             this.buttonConfirm.TabIndex = 3;
@@ -212,7 +212,7 @@ namespace NFLWarehouse.Forms
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1048, 44);
+            this.panel4.Size = new System.Drawing.Size(1060, 44);
             this.panel4.TabIndex = 4;
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
@@ -239,7 +239,7 @@ namespace NFLWarehouse.Forms
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 525);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1048, 62);
+            this.panel5.Size = new System.Drawing.Size(1060, 62);
             this.panel5.TabIndex = 5;
             // 
             // labelVersion
@@ -247,7 +247,7 @@ namespace NFLWarehouse.Forms
             this.labelVersion.AutoSize = true;
             this.labelVersion.BackColor = System.Drawing.Color.Black;
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelVersion.Location = new System.Drawing.Point(776, -1);
+            this.labelVersion.Location = new System.Drawing.Point(958, 3);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(56, 17);
             this.labelVersion.TabIndex = 2;
@@ -262,7 +262,7 @@ namespace NFLWarehouse.Forms
             this.prompt.ForeColor = System.Drawing.Color.Lime;
             this.prompt.Location = new System.Drawing.Point(0, 0);
             this.prompt.Name = "prompt";
-            this.prompt.Size = new System.Drawing.Size(1048, 62);
+            this.prompt.Size = new System.Drawing.Size(1060, 62);
             this.prompt.TabIndex = 1;
             this.prompt.TabStop = false;
             this.prompt.Text = "";
@@ -280,7 +280,7 @@ namespace NFLWarehouse.Forms
             // pictureWindowMinimize
             // 
             this.pictureWindowMinimize.Image = global::NFLWarehouse.Properties.Resources.minimize_1;
-            this.pictureWindowMinimize.Location = new System.Drawing.Point(915, 4);
+            this.pictureWindowMinimize.Location = new System.Drawing.Point(930, 4);
             this.pictureWindowMinimize.Name = "pictureWindowMinimize";
             this.pictureWindowMinimize.Size = new System.Drawing.Size(40, 37);
             this.pictureWindowMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -291,7 +291,7 @@ namespace NFLWarehouse.Forms
             // pictureWindowNormal
             // 
             this.pictureWindowNormal.Image = global::NFLWarehouse.Properties.Resources.maximize;
-            this.pictureWindowNormal.Location = new System.Drawing.Point(959, 4);
+            this.pictureWindowNormal.Location = new System.Drawing.Point(974, 4);
             this.pictureWindowNormal.Name = "pictureWindowNormal";
             this.pictureWindowNormal.Size = new System.Drawing.Size(40, 37);
             this.pictureWindowNormal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -302,7 +302,7 @@ namespace NFLWarehouse.Forms
             // pictureWindowClose
             // 
             this.pictureWindowClose.Image = global::NFLWarehouse.Properties.Resources.close_1;
-            this.pictureWindowClose.Location = new System.Drawing.Point(1003, 4);
+            this.pictureWindowClose.Location = new System.Drawing.Point(1018, 4);
             this.pictureWindowClose.Name = "pictureWindowClose";
             this.pictureWindowClose.Size = new System.Drawing.Size(40, 37);
             this.pictureWindowClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
