@@ -126,7 +126,7 @@ namespace NFLWarehouse.Forms
             this.buttonClear.Location = new System.Drawing.Point(30, 339);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(260, 98);
-            this.buttonClear.TabIndex = 7;
+            this.buttonClear.TabIndex = 4;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
             // 
@@ -149,7 +149,7 @@ namespace NFLWarehouse.Forms
             this.buttonConfirm.Location = new System.Drawing.Point(700, 339);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(260, 98);
-            this.buttonConfirm.TabIndex = 5;
+            this.buttonConfirm.TabIndex = 3;
             this.buttonConfirm.Text = "Confirm";
             this.buttonConfirm.UseVisualStyleBackColor = false;
             // 
@@ -171,7 +171,7 @@ namespace NFLWarehouse.Forms
             this.textBoxTote.Location = new System.Drawing.Point(30, 134);
             this.textBoxTote.Name = "textBoxTote";
             this.textBoxTote.Size = new System.Drawing.Size(930, 53);
-            this.textBoxTote.TabIndex = 3;
+            this.textBoxTote.TabIndex = 1;
             this.textBoxTote.Enter += new System.EventHandler(this.textBoxTote_Enter);
             this.textBoxTote.Leave += new System.EventHandler(this.textBoxTote_Leave);
             // 
@@ -200,6 +200,7 @@ namespace NFLWarehouse.Forms
             this.checkedListBoxValidations.Name = "checkedListBoxValidations";
             this.checkedListBoxValidations.Size = new System.Drawing.Size(103, 68);
             this.checkedListBoxValidations.TabIndex = 1;
+            this.checkedListBoxValidations.TabStop = false;
             // 
             // labelProcessName
             // 
@@ -274,6 +275,7 @@ namespace NFLWarehouse.Forms
             this.prompt.Name = "prompt";
             this.prompt.Size = new System.Drawing.Size(967, 62);
             this.prompt.TabIndex = 1;
+            this.prompt.TabStop = false;
             this.prompt.Text = "";
             // 
             // textBoxLocation
@@ -282,7 +284,7 @@ namespace NFLWarehouse.Forms
             this.textBoxLocation.Location = new System.Drawing.Point(29, 270);
             this.textBoxLocation.Name = "textBoxLocation";
             this.textBoxLocation.Size = new System.Drawing.Size(433, 53);
-            this.textBoxLocation.TabIndex = 8;
+            this.textBoxLocation.TabIndex = 2;
             this.textBoxLocation.Enter += new System.EventHandler(this.textBoxLocation_Enter);
             this.textBoxLocation.Leave += new System.EventHandler(this.textBoxLocation_Leave);
             // 
