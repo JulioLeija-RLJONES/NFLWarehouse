@@ -24,7 +24,7 @@ namespace NFLWarehouse.Forms
         private string instruction2 = "2 Scan the location barcode where the item is being stored";
         private string hostname = Dns.GetHostName();
         private Color titleColor = Color.Yellow;
-        private NFLWarehouseDB nflwarehouseDB = new NFLWarehouseDB();
+        private NFLWarehouseDB nflwarehouseDB;
         private System.Windows.Forms.Form commingFrom;
         #endregion
 
@@ -36,8 +36,8 @@ namespace NFLWarehouse.Forms
         public FrmScanIn(System.Windows.Forms.Form commingFrom)
         {
             InitializeComponent();
+           
             this.commingFrom = commingFrom;
-
         }
 
 
@@ -50,6 +50,11 @@ namespace NFLWarehouse.Forms
         #endregion
 
         #region Actions
+        public void ActionAllocate()
+        {
+            nflwarehouseDB.AllocateTote(GetTote(), GetLocation());
+            ClearForm();
+        }
         #endregion
 
         #region Cosmetics
@@ -60,13 +65,25 @@ namespace NFLWarehouse.Forms
         #endregion
 
         #region Controls
-        private void FrmScanIn_Load(object sender, EventArgs e)
+        private string GetTote()
+        {
+            return textBoxTote.Text;
+        }
+        public string GetLocation()
+        {
+            return textBoxLocation.Text;
+        }
+        private  void  FrmScanIn_Load(object sender, EventArgs e)
         {
             initForm();
             MsgTypes.printme(MsgTypes.msg_success, "Ready", this);
             MsgTypes.printme(MsgTypes.msg_success, "Address: " + Tools.GetLocalIPAddress(),this);
+
+            nflwarehouseDB = new NFLWarehouseDB();
             nflwarehouseDB.Open();
             MsgTypes.printme(MsgTypes.msg_success, "NFLWarehosue database connected.",this);
+
+           
         }
         public void initForm()
         {
@@ -118,13 +135,11 @@ namespace NFLWarehouse.Forms
         {
             SetColorTextBoxSelected((TextBox) sender);
         }
-
         private void textBoxLocation_Leave(object sender, EventArgs e)
         {
             SetColorTextBoxReleased((TextBox)sender);
             
         }
-
         private void SetColorTextBoxSelected(TextBox t)
         {
             t.BackColor = Color.Lime;
@@ -132,6 +147,11 @@ namespace NFLWarehouse.Forms
         private void SetColorTextBoxReleased(TextBox t)
         {
             t.BackColor = SystemColors.Window;
+        }
+        public void ClearForm()
+        {
+            textBoxTote.Clear();
+            textBoxLocation.Clear();
         }
         #endregion
 
@@ -215,5 +235,9 @@ namespace NFLWarehouse.Forms
         }
         #endregion
 
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            ActionAllocate();
+        }
     }
 }

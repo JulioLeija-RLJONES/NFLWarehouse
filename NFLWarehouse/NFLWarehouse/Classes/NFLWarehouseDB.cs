@@ -24,25 +24,25 @@ namespace NFLWarehouse.Classes
         {
 
         }
-        public NFLWarehouseDB(System.Windows.Forms.Form commingFrom) : base("nfl")
+        public NFLWarehouseDB(System.Windows.Forms.Form commingForm) : base("nfl")
         {
             this.commingFrom = commingFrom;
         }
 
 
-        
 
         #region  Inventory Transactions
         public bool AllocateTote(string Tote, string location)
         {
             int locationId;
-            // Checking if provided location exists
+            //Checking if provided location exists
             if (LocationExists(location))
             {// Location provided is valid, get locationid
                 locationId = GetLocationId(location);
-            }else
+            }
+            else
             {// Location is invalid, interrupt allocation transaction.
-                MsgTypes.printme(MsgTypes.msg_failure, "Location " + location + " is not created in the warehouse. Cannot complete allocation.", commingFrom);
+                MsgTypes.printme(MsgTypes.msg_failure, "Location " + location + " is not created.", commingFrom);
                 return false;
             }
 
@@ -58,7 +58,7 @@ namespace NFLWarehouse.Classes
                         return true;
                     }else
                     {// if tote is Allocated, then return warning message without updating location
-                        MsgTypes.printme(MsgTypes.msg_failure, "Tote " +  Tote + " is allocated.", commingFrom);
+                        MsgTypes.printme(MsgTypes.msg_failure, "Tote " +  Tote + " is allocated in " + GetLocation(toteid), commingFrom);
                         return false;
                     }
                 }else
@@ -153,6 +153,13 @@ namespace NFLWarehouse.Classes
             {
                 return false;
             }
+        }
+        public bool querytest()
+        {
+            string sql = "SELECT COUNT(*) FROM dbo.tbl_NFLWarehouse_Tote";
+            ExecuteReader(sql);
+            
+            return true;
         }
         #endregion
 
@@ -258,10 +265,14 @@ namespace NFLWarehouse.Classes
         {
             try
             {
-                string sql = "SELECT ToteId FROM tbl_NFLWarehouse_MasterLocation LOC WHERE LOC.Name = '@Name'";
-                var parameters = new List<SqlParameter>
-                { new SqlParameter("@Name",Location)};
-                var rows = ExecuteReader(sql, parameters);
+                string sql = String.Format("SELECT locationId FROM tbl_NFLWarehouse_Master_Location /*WHERE Name = '{0}'*/",Location);
+
+                // Passign parameteres is baddly implemented. Review later.
+                //var parameters = new List<SqlParameter>
+                //{ new SqlParameter("@Name",Location)};
+                //var rows = ExecuteReader(sql, parameters);
+
+                var rows = ExecuteReader(sql);
                 if (rows.Count > 0)
                 {
                     return true;
@@ -298,7 +309,7 @@ namespace NFLWarehouse.Classes
                 return 0;
             }
         }
-        public string GetLocation(int locationId)
+        public string GetLocationName(int locationId)
         {
             try
             {
@@ -320,7 +331,29 @@ namespace NFLWarehouse.Classes
                 return "";
             }
         }
-     
+        public string GetLocation(int toteid)
+        {
+            try
+            {
+                string sql = "SELECT Name FROM dbo.tbl_NFLWarehouse_Tote TOTE WHERE TOTE.ToteId = '@toteid'";
+                var parameters = new List<SqlParameter>
+                {new SqlParameter("@toteid",toteid)};
+                var rows = ExecuteReader(sql, parameters);
+                if (rows.Count > 0)
+                {
+                    return rows[0].FieldValues[0].ToString();
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+
         #endregion
     }
 }

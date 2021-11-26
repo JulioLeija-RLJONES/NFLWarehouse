@@ -149,6 +149,7 @@ namespace NFLWarehouse.Forms
             this.buttonConfirm.TabIndex = 3;
             this.buttonConfirm.Text = "Confirm";
             this.buttonConfirm.UseVisualStyleBackColor = false;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // labelInstruction2
             // 

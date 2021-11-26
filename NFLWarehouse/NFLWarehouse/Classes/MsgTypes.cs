@@ -27,7 +27,7 @@ namespace NFLWarehouse.Classes
             {
                 foreach (System.Windows.Forms.Control  c in sender.Controls)
                 {
-                    Console.WriteLine("[c] contorl: " + c.Name);
+                    //Console.WriteLine("[c] contorl: " + c.Name);
                     if(c.Name == "prompt")
                     {
                         prompt = (System.Windows.Forms.RichTextBox)c;
@@ -35,7 +35,7 @@ namespace NFLWarehouse.Classes
                     }
                     foreach (System.Windows.Forms.Control d in c.Controls)
                     {
-                        Console.WriteLine("[d] contorl: " + d.Name);
+                        //Console.WriteLine("[d] contorl: " + d.Name);
                         if (d.Name == "prompt")
                         {
                             prompt = (System.Windows.Forms.RichTextBox)d;
@@ -43,7 +43,7 @@ namespace NFLWarehouse.Classes
                         }
                         foreach (System.Windows.Forms.Control e in d.Controls)
                         {
-                            Console.WriteLine("[e] contorl: " + e.Name);
+                            //Console.WriteLine("[e] contorl: " + e.Name);
                             if (e.Name == "prompt")
                             {
                                 prompt = (System.Windows.Forms.RichTextBox)e;
@@ -51,7 +51,7 @@ namespace NFLWarehouse.Classes
                             }
                             foreach (System.Windows.Forms.Control f in e.Controls)
                             {
-                                Console.WriteLine("[f] contorl: " + f.Name);
+                                //Console.WriteLine("[f] contorl: " + f.Name);
                                 if (f.Name == "prompt")
                                 {
                                     prompt = (System.Windows.Forms.RichTextBox)f;
@@ -59,7 +59,7 @@ namespace NFLWarehouse.Classes
                                 }
                                 foreach (System.Windows.Forms.Control g in f.Controls)
                                 {
-                                    Console.WriteLine("[g] contorl: " + g.Name);
+                                    //Console.WriteLine("[g] contorl: " + g.Name);
                                     if (g.Name == "prompt")
                                     {
                                         prompt = (System.Windows.Forms.RichTextBox)g;

@@ -18,23 +18,18 @@ namespace NFLWarehouse.Classes
 
         ConnectionStringSettingsCollection settings =
         ConfigurationManager.ConnectionStrings;
+        private System.Windows.Forms.Form commingFrom;
 
         public SqlHelper(string connectionName)
         {
+            this.commingFrom = commingFrom;
             if(connectionName == "nfl")
             {
-                Connection = new SqlConnection(settings[1].ConnectionString.ToString());
+                Connection = new SqlConnection(settings[0].ConnectionString.ToString());
             }
             
+            Console.WriteLine("passed connection name: " + connectionName.ToString());
             Console.WriteLine("using connection: " + Connection.Database);
-            Console.WriteLine("passed connection name" + connectionName.ToString());
-
-
-            Console.WriteLine("----------------------------------------------");
-            Console.WriteLine("connection string");
-            Console.WriteLine(settings[3].ConnectionString.ToString());
-            Console.WriteLine("----------------------------------------------");
-
         }
 
         public void Dispose()
@@ -47,13 +42,13 @@ namespace NFLWarehouse.Classes
         {
             try
             {
-           
                 if (Connection != null)
                     Connection.Open();
             }catch(Exception ex)
             {
                 string msg = "experiencing connection issues..";
                 Console.WriteLine(msg);
+               
             }
         }
         
@@ -82,8 +77,8 @@ namespace NFLWarehouse.Classes
             using (var cmd = new SqlCommand(sql, Connection))
             {
                 cmd.Parameters.AddRange(parameters.ToArray());
+                Console.WriteLine("inspection command text: " + cmd.CommandText);
                 var reader = cmd.ExecuteReader();
-
                 while (reader.Read())
                 {
                     SqlTableRow row = new SqlTableRow();

@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NFLWarehouse.exe" size="895928">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NFLWarehouse.exe" size="901560">
       <assemblyIdentity name="NFLWarehouse" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SxdFsq15iz+Sd71mvwFJvhwIIgYdL/We5vRTyWlT6BA=</dsig:DigestValue>
+        <dsig:DigestValue>DguymbmwfF0YI8MvAQ+Ta7pqezDeav/rdH6vmM6H1g8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -111,13 +111,13 @@
       <dsig:DigestValue>Kr/hd2axeu4tNdTB6oBYRitkVp4goZ7YAXyApYc5fQ4=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="NFLWarehouse.exe.config" size="840">
+  <file name="NFLWarehouse.exe.config" size="449">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HgHgZDerKAqq8IJeJ9VhvIK5qQTrgkb3jWa3BWny4wE=</dsig:DigestValue>
+      <dsig:DigestValue>mH7UVQ6tHdnCHUJGW10M9wh2aFHmDlR0q12WDkDGVBA=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
