@@ -81,8 +81,6 @@ namespace NFLWarehouse.Classes
              
             }
        
-
-
             switch (messageType)
             {
                 case 0:
@@ -99,6 +97,10 @@ namespace NFLWarehouse.Classes
                     break;
             }
         }
+
+       
+
+
 
     }
 }

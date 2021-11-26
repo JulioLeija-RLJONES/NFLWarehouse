@@ -22,18 +22,22 @@ namespace NFLWarehouse.Forms
         private string instruction2 = "";
         private string hostname = Dns.GetHostName();
         private Color titleColor = Color.OrangeRed;
+        private System.Windows.Forms.Form commingFrom;
         #endregion
 
-
+        public FrmScanout(System.Windows.Forms.Form commingFrom)
+        {
+            InitializeComponent();
+            this.commingFrom = commingFrom;
+        }
         public FrmScanout()
         {
             InitializeComponent();
-            FrmScanIn scanin = new FrmScanIn();
-            scanin.Show();
         }
 
+
         #region Logic
-      
+
         #endregion
 
         #region Actions

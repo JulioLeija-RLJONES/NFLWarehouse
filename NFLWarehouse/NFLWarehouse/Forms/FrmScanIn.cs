@@ -24,6 +24,8 @@ namespace NFLWarehouse.Forms
         private string instruction2 = "2 Scan the location barcode where the item is being stored";
         private string hostname = Dns.GetHostName();
         private Color titleColor = Color.Yellow;
+        private NFLWarehouseDB nflwarehouseDB = new NFLWarehouseDB();
+        private System.Windows.Forms.Form commingFrom;
         #endregion
 
 
@@ -31,6 +33,13 @@ namespace NFLWarehouse.Forms
         {
             InitializeComponent();
         }
+        public FrmScanIn(System.Windows.Forms.Form commingFrom)
+        {
+            InitializeComponent();
+            this.commingFrom = commingFrom;
+
+        }
+
 
 
         #region Logic
@@ -56,6 +65,8 @@ namespace NFLWarehouse.Forms
             initForm();
             MsgTypes.printme(MsgTypes.msg_success, "Ready", this);
             MsgTypes.printme(MsgTypes.msg_success, "Address: " + Tools.GetLocalIPAddress(),this);
+            nflwarehouseDB.Open();
+            MsgTypes.printme(MsgTypes.msg_success, "NFLWarehosue database connected.",this);
         }
         public void initForm()
         {

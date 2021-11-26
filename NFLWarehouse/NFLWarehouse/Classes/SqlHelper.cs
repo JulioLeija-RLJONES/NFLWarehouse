@@ -21,14 +21,11 @@ namespace NFLWarehouse.Classes
 
         public SqlHelper(string connectionName)
         {
-            if(connectionName == "ewarehouse")
+            if(connectionName == "nfl")
             {
                 Connection = new SqlConnection(settings[1].ConnectionString.ToString());
             }
-            else
-            {
-                Connection = new SqlConnection(settings[2].ConnectionString.ToString());
-            }
+            
             Console.WriteLine("using connection: " + Connection.Database);
             Console.WriteLine("passed connection name" + connectionName.ToString());
 

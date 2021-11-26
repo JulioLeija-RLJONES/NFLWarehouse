@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3s0pwUI85c2mJs84MIWoXk79AkWoYBisTOwOevOIXsU=</dsig:DigestValue>
+        <dsig:DigestValue>SxdFsq15iz+Sd71mvwFJvhwIIgYdL/We5vRTyWlT6BA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -111,13 +111,13 @@
       <dsig:DigestValue>Kr/hd2axeu4tNdTB6oBYRitkVp4goZ7YAXyApYc5fQ4=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="NFLWarehouse.exe.config" size="189">
+  <file name="NFLWarehouse.exe.config" size="840">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+      <dsig:DigestValue>HgHgZDerKAqq8IJeJ9VhvIK5qQTrgkb3jWa3BWny4wE=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
