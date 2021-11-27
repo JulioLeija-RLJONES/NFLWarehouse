@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using NFLWarehouse.Classes;
 using System.Configuration;
 
 namespace NFLWarehouse.Classes

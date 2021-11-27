@@ -26,6 +26,12 @@ namespace NFLWarehouse.Forms
         private Color titleColor = Color.Yellow;
         private NFLWarehouseDB nflwarehouseDB;
         private System.Windows.Forms.Form commingFrom;
+        public bool flag = false;
+
+        // Messages
+        string message1 = "Tool shutting down.";
+        string message2 = "Connecting to NFL databse, please wait...";
+
         #endregion
 
 
@@ -37,7 +43,6 @@ namespace NFLWarehouse.Forms
         {
             InitializeComponent();
            
-            this.commingFrom = commingFrom;
         }
 
 
@@ -65,6 +70,17 @@ namespace NFLWarehouse.Forms
         #endregion
 
         #region Controls
+        // Standard
+        private async void FrmScanIn_Load(object sender, EventArgs e)
+        {
+            initForm();
+            MsgTypes.printme(MsgTypes.msg_success, message2, this);
+
+            nflwarehouseDB = new NFLWarehouseDB(this);
+            blockForm();
+            await nflwarehouseDB.OpenAsync();
+           
+        }
         private string GetTote()
         {
             return textBoxTote.Text;
@@ -73,20 +89,9 @@ namespace NFLWarehouse.Forms
         {
             return textBoxLocation.Text;
         }
-        private  void  FrmScanIn_Load(object sender, EventArgs e)
-        {
-            initForm();
-            MsgTypes.printme(MsgTypes.msg_success, "Ready", this);
-            MsgTypes.printme(MsgTypes.msg_success, "Address: " + Tools.GetLocalIPAddress(),this);
-
-            nflwarehouseDB = new NFLWarehouseDB();
-            nflwarehouseDB.Open();
-            MsgTypes.printme(MsgTypes.msg_success, "NFLWarehosue database connected.",this);
-
-           
-        }
         public void initForm()
         {
+
             CustomizeTitle();
             this.Text = toolName + " " + stationName;
             labelToolName.Text = this.toolName;
@@ -140,6 +145,15 @@ namespace NFLWarehouse.Forms
             SetColorTextBoxReleased((TextBox)sender);
             
         }
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            ActionAllocate();
+        }
+        private void FrmScanIn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MsgTypes.printme(MsgTypes.msg_success, message1, this);
+        }
+        // Custom
         private void SetColorTextBoxSelected(TextBox t)
         {
             t.BackColor = Color.Lime;
@@ -152,6 +166,22 @@ namespace NFLWarehouse.Forms
         {
             textBoxTote.Clear();
             textBoxLocation.Clear();
+        }
+        public void blockForm()
+        {
+            textBoxTote.Enabled = false;
+            textBoxLocation.Enabled = false;
+            buttonConfirm.Enabled = false;
+            buttonClear.Enabled = false;
+            this.UseWaitCursor = true;
+        }
+        public void releaseForm()
+        {
+            textBoxTote.Enabled = true;
+            textBoxLocation.Enabled = true;
+            buttonConfirm.Enabled = true;
+            buttonClear.Enabled = true;
+            this.UseWaitCursor = false;
         }
         #endregion
 
@@ -235,9 +265,6 @@ namespace NFLWarehouse.Forms
         }
         #endregion
 
-        private void buttonConfirm_Click(object sender, EventArgs e)
-        {
-            ActionAllocate();
-        }
+    
     }
 }

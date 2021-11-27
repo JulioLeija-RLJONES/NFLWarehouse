@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using NFLWarehouse.Classes;
 using System.Configuration;
+using NFLWarehouse.Forms;
 
 namespace NFLWarehouse.Classes
 {
 
     public class SqlHelper : IDisposable
     {
+
+        #region Global Variables
         protected readonly ConnectionStringManager ConnStrMgr;
         protected readonly SqlConnection Connection;
 
@@ -20,18 +22,27 @@ namespace NFLWarehouse.Classes
         ConfigurationManager.ConnectionStrings;
         private System.Windows.Forms.Form commingFrom;
 
+        // Messages
+        string message1 = "connection completed.";
+        string message2 = "experiencing connection issues...";
+        #endregion
+
+
+
         public SqlHelper(string connectionName)
         {
-            this.commingFrom = commingFrom;
-            if(connectionName == "nfl")
-            {
-                Connection = new SqlConnection(settings[0].ConnectionString.ToString());
-            }
-            
-            Console.WriteLine("passed connection name: " + connectionName.ToString());
-            Console.WriteLine("using connection: " + Connection.Database);
+            ConnStrMgr = new ConnectionStringManager(connectionName);
+            Connection = new SqlConnection(ConnStrMgr.ToString());
+           
         }
 
+        public SqlHelper(string connectionName, System.Windows.Forms.Form commingFrom)
+        {
+            ConnStrMgr = new ConnectionStringManager(connectionName);
+            Connection = new SqlConnection(ConnStrMgr.ToString());
+            this.commingFrom = commingFrom;
+            
+        }
         public void Dispose()
         {
             if (Connection != null)
@@ -59,13 +70,25 @@ namespace NFLWarehouse.Classes
             {
             if (Connection != null)
                 await Connection.OpenAsync();
+                MsgTypes.printme(MsgTypes.msg_success, message1, commingFrom);
+
+                if(commingFrom.Text.Contains("Scan In Station"))
+                {
+                    NFLWarehouse.Forms.FrmScanIn frm = (NFLWarehouse.Forms.FrmScanIn)commingFrom;
+                    frm.releaseForm();
+                }
+                else
+                {
+
+                }
             }
             catch (Exception ex)
             {
-                string msg = "experiencing connection issues..";
-                Console.WriteLine(msg);
+                MsgTypes.printme(MsgTypes.msg_success, message2, commingFrom);
+                Console.WriteLine(message2);
             }
         }
+        
 
         public List<SqlTableRow> ExecuteReader(string sql, IEnumerable<SqlParameter> parameters = null)
         {
@@ -77,8 +100,8 @@ namespace NFLWarehouse.Classes
             using (var cmd = new SqlCommand(sql, Connection))
             {
                 cmd.Parameters.AddRange(parameters.ToArray());
-                Console.WriteLine("inspection command text: " + cmd.CommandText);
                 var reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     SqlTableRow row = new SqlTableRow();

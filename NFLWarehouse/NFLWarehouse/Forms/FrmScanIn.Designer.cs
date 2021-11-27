@@ -65,7 +65,7 @@ namespace NFLWarehouse.Forms
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 0);
@@ -83,13 +83,14 @@ namespace NFLWarehouse.Forms
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(1069, 3);
+            this.panel3.Location = new System.Drawing.Point(1076, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(9, 44);
+            this.panel3.Size = new System.Drawing.Size(2, 44);
             this.panel3.TabIndex = 3;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.labelVersion);
             this.panel2.Controls.Add(this.textBoxLocation);
             this.panel2.Controls.Add(this.buttonClear);
             this.panel2.Controls.Add(this.labelHostName);
@@ -223,7 +224,7 @@ namespace NFLWarehouse.Forms
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1060, 44);
+            this.panel4.Size = new System.Drawing.Size(1067, 44);
             this.panel4.TabIndex = 4;
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
@@ -232,7 +233,7 @@ namespace NFLWarehouse.Forms
             // pictureWindowMinimize
             // 
             this.pictureWindowMinimize.Image = global::NFLWarehouse.Properties.Resources.minimize_1;
-            this.pictureWindowMinimize.Location = new System.Drawing.Point(930, 4);
+            this.pictureWindowMinimize.Location = new System.Drawing.Point(936, 4);
             this.pictureWindowMinimize.Name = "pictureWindowMinimize";
             this.pictureWindowMinimize.Size = new System.Drawing.Size(40, 37);
             this.pictureWindowMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -243,7 +244,7 @@ namespace NFLWarehouse.Forms
             // pictureWindowNormal
             // 
             this.pictureWindowNormal.Image = global::NFLWarehouse.Properties.Resources.maximize;
-            this.pictureWindowNormal.Location = new System.Drawing.Point(974, 4);
+            this.pictureWindowNormal.Location = new System.Drawing.Point(980, 4);
             this.pictureWindowNormal.Name = "pictureWindowNormal";
             this.pictureWindowNormal.Size = new System.Drawing.Size(40, 37);
             this.pictureWindowNormal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -254,7 +255,7 @@ namespace NFLWarehouse.Forms
             // pictureWindowClose
             // 
             this.pictureWindowClose.Image = global::NFLWarehouse.Properties.Resources.close_1;
-            this.pictureWindowClose.Location = new System.Drawing.Point(1018, 4);
+            this.pictureWindowClose.Location = new System.Drawing.Point(1024, 4);
             this.pictureWindowClose.Name = "pictureWindowClose";
             this.pictureWindowClose.Size = new System.Drawing.Size(40, 37);
             this.pictureWindowClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -291,12 +292,11 @@ namespace NFLWarehouse.Forms
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.labelVersion);
             this.panel5.Controls.Add(this.prompt);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 525);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1060, 62);
+            this.panel5.Size = new System.Drawing.Size(1067, 62);
             this.panel5.TabIndex = 5;
             // 
             // labelVersion
@@ -304,7 +304,7 @@ namespace NFLWarehouse.Forms
             this.labelVersion.AutoSize = true;
             this.labelVersion.BackColor = System.Drawing.Color.Black;
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelVersion.Location = new System.Drawing.Point(941, -1);
+            this.labelVersion.Location = new System.Drawing.Point(940, 445);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(106, 17);
             this.labelVersion.TabIndex = 2;
@@ -319,7 +319,7 @@ namespace NFLWarehouse.Forms
             this.prompt.ForeColor = System.Drawing.Color.Lime;
             this.prompt.Location = new System.Drawing.Point(0, 0);
             this.prompt.Name = "prompt";
-            this.prompt.Size = new System.Drawing.Size(1060, 62);
+            this.prompt.Size = new System.Drawing.Size(1067, 62);
             this.prompt.TabIndex = 1;
             this.prompt.TabStop = false;
             this.prompt.Text = "";
@@ -335,6 +335,7 @@ namespace NFLWarehouse.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmScanIn";
             this.Text = "FrmScanIn";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmScanIn_FormClosing);
             this.Load += new System.EventHandler(this.FrmScanIn_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -346,7 +347,6 @@ namespace NFLWarehouse.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
