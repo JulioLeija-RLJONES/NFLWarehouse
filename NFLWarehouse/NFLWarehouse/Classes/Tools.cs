@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 
 namespace NFLWarehouse.Classes
 {
@@ -35,6 +36,21 @@ namespace NFLWarehouse.Classes
                 }
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+        
+        public static bool IsGoodToteName(string tote)
+        {
+            Regex regex = new Regex(@"[A-Z]{3}-[0-9]{4}");
+            Match match1 = regex.Match(tote);
+
+            if (match1.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

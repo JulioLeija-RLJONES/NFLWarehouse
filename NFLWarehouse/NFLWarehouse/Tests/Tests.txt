@@ -89,3 +89,9 @@ StatusOut	= 2
 
 Result: Pass. Transactions recorded good.
 
+----------------------------------------------
+Test 7: Allocate an allocated Tote.
+
+Message: The tote is already allocated + unsuccessful allocation transaction record.
+
+Result: PASS
