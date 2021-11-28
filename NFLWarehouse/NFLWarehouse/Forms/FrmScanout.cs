@@ -28,6 +28,7 @@ namespace NFLWarehouse.Forms
         // Messages
         //string message1 = "Tool shutting down.";
         string message2 = "Connecting to NFL databse, please wait...";
+        string message3 = "Tote name {0} has invalid nomeclature, please double check and try again.";
         #endregion
 
         public FrmScanout()
@@ -49,8 +50,16 @@ namespace NFLWarehouse.Forms
         #region Actions
         public void ActionScanout()
         {
-            nflwarehouseDB.ReleaseTote(GetTote());
-            ClearForm();
+            if (Tools.IsGoodToteName(GetTote()))
+            {
+                nflwarehouseDB.ReleaseTote(GetTote());
+                ClearForm();
+            }else
+            {
+                MsgTypes.printme(MsgTypes.msg_failure, String.Format(message3, GetTote()), this);
+                textBoxTote.Select();
+                textBoxTote.SelectAll();
+            }
         }
         public void ActionSwitch()
         {
