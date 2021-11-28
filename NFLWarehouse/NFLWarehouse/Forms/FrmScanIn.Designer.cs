@@ -33,6 +33,7 @@ namespace NFLWarehouse.Forms
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.textBoxLocation = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.labelHostName = new System.Windows.Forms.Label();
@@ -43,17 +44,18 @@ namespace NFLWarehouse.Forms
             this.checkedListBoxValidations = new System.Windows.Forms.CheckedListBox();
             this.labelProcessName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureSwitch = new System.Windows.Forms.PictureBox();
             this.pictureWindowMinimize = new System.Windows.Forms.PictureBox();
             this.pictureWindowNormal = new System.Windows.Forms.PictureBox();
             this.pictureWindowClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.labelToolName = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.labelVersion = new System.Windows.Forms.Label();
             this.prompt = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).BeginInit();
@@ -105,6 +107,17 @@ namespace NFLWarehouse.Forms
             this.panel2.Size = new System.Drawing.Size(1060, 466);
             this.panel2.TabIndex = 2;
             // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.BackColor = System.Drawing.Color.Black;
+            this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelVersion.Location = new System.Drawing.Point(940, 445);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(106, 17);
+            this.labelVersion.TabIndex = 2;
+            this.labelVersion.Text = "Version: Debug";
+            // 
             // textBoxLocation
             // 
             this.textBoxLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -127,6 +140,7 @@ namespace NFLWarehouse.Forms
             this.buttonClear.TabIndex = 4;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // labelHostName
             // 
@@ -216,6 +230,7 @@ namespace NFLWarehouse.Forms
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel4.Controls.Add(this.pictureSwitch);
             this.panel4.Controls.Add(this.pictureWindowMinimize);
             this.panel4.Controls.Add(this.pictureWindowNormal);
             this.panel4.Controls.Add(this.pictureWindowClose);
@@ -229,6 +244,17 @@ namespace NFLWarehouse.Forms
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
             this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseUp);
+            // 
+            // pictureSwitch
+            // 
+            this.pictureSwitch.Image = global::NFLWarehouse.Properties.Resources.scanout;
+            this.pictureSwitch.Location = new System.Drawing.Point(893, 4);
+            this.pictureSwitch.Name = "pictureSwitch";
+            this.pictureSwitch.Size = new System.Drawing.Size(40, 37);
+            this.pictureSwitch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureSwitch.TabIndex = 7;
+            this.pictureSwitch.TabStop = false;
+            this.pictureSwitch.Click += new System.EventHandler(this.pictureSwitch_Click);
             // 
             // pictureWindowMinimize
             // 
@@ -299,17 +325,6 @@ namespace NFLWarehouse.Forms
             this.panel5.Size = new System.Drawing.Size(1067, 62);
             this.panel5.TabIndex = 5;
             // 
-            // labelVersion
-            // 
-            this.labelVersion.AutoSize = true;
-            this.labelVersion.BackColor = System.Drawing.Color.Black;
-            this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelVersion.Location = new System.Drawing.Point(940, 445);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(106, 17);
-            this.labelVersion.TabIndex = 2;
-            this.labelVersion.Text = "Version: Debug";
-            // 
             // prompt
             // 
             this.prompt.BackColor = System.Drawing.Color.Black;
@@ -342,6 +357,7 @@ namespace NFLWarehouse.Forms
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).EndInit();
@@ -374,5 +390,6 @@ namespace NFLWarehouse.Forms
         private System.Windows.Forms.PictureBox pictureWindowMinimize;
         private System.Windows.Forms.PictureBox pictureWindowNormal;
         private System.Windows.Forms.PictureBox pictureWindowClose;
+        private System.Windows.Forms.PictureBox pictureSwitch;
     }
 }

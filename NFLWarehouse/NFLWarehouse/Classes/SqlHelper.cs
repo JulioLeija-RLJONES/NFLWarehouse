@@ -57,9 +57,9 @@ namespace NFLWarehouse.Classes
                     Connection.Open();
             }catch(Exception ex)
             {
-                string msg = "experiencing connection issues..";
+                string msg = "experiencing connection issues.." ;
+                Console.WriteLine(ex);
                 Console.WriteLine(msg);
-               
             }
         }
         
@@ -79,13 +79,15 @@ namespace NFLWarehouse.Classes
                 }
                 else
                 {
-
+                    NFLWarehouse.Forms.FrmScanout frm = (NFLWarehouse.Forms.FrmScanout)commingFrom;
+                    frm.releaseForm();
                 }
             }
             catch (Exception ex)
             {
                 MsgTypes.printme(MsgTypes.msg_success, message2, commingFrom);
                 Console.WriteLine(message2);
+                Console.WriteLine(ex);
             }
         }
         

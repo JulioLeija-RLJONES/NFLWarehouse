@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Net;
+using NFLWarehouse.Classes;
 
 
 // November 25: Transactions is not done.  Next thing is to add Allocation to GUI.
@@ -14,36 +15,18 @@ namespace NFLWarehouse.Classes
     public class NFLWarehouseDB : SqlHelper
     {
         #region Global Variables
-
         string version;
-
-        // Location None: 
-        int locationNone = 1;
-
-        // tote status:
-        int statusAllocated = 1;
-        int statusFloating = 2;
-        int statusShipped = 3;
-        int statusNone = 0;
-
-        // transaction types:
-        int transactionTypeInsert = 1;
-        int transactionTypeUpdate = 2;
-        int transactionTypeDelete = 3;
-
-        // transaction status:
-        int Failed = 0;
-        int Succeeded = 1;
-
-
+        System.Windows.Forms.Form commingFrom;
         // Messages
         string message1 = "Location {0} is not created. Please let know supervisor to review if location needs to be created.";
         string message2 = "tote allocated: {0} in {1}";
         string message3 = "Tote {0} is already allocated in {1}";
         string message4 = "Could not record this transaction. Please check network connection.";
+        string message5 = "Tote {0} location updated from {1} to {2}";
+        string message6 = "Database unreachable when {}";
+        string message7 = "Tote {0} is now floating, transfer it to its destination.";
         #endregion
 
-        System.Windows.Forms.Form commingFrom;
         public NFLWarehouseDB(): base("nfl")
         {
             SetVersion();
@@ -73,10 +56,10 @@ namespace NFLWarehouse.Classes
         #region  Inventory Transactions
         public bool AllocateTote(string Tote, string location)
         {
-            int locationIn = locationNone;
-            int locationOut = locationNone;
-            int statusIn = statusNone;
-            int statusOut = statusNone;
+            int locationIn = Location.None;
+            int locationOut = Location.None;
+            int statusIn = Status.statusNone;
+            int statusOut = Status.statusNone;
             int toteid = 0;
 
             //Checking if provided location exists.
@@ -88,8 +71,8 @@ namespace NFLWarehouse.Classes
             {// Location is invalid, interrupt allocation transaction.
                 MsgTypes.printme(MsgTypes.msg_failure, String.Format(message1,location), commingFrom);
 
-                InsertTransaction(toteid, Tote, location, 0, 0, transactionTypeInsert, Dns.GetHostName(),
-                             GetStatusId(toteid), GetStatusId(toteid), Tools.GetLocalIPAddress(), Failed,version);
+                InsertTransaction(toteid, Tote, location, 0, 0, TransactionType.transactionTypeInsert, Dns.GetHostName(),
+                             GetStatusId(toteid), GetStatusId(toteid), Tools.GetLocalIPAddress(), TransactionType.Failed,version);
 
                 return false;
             }
@@ -100,44 +83,53 @@ namespace NFLWarehouse.Classes
                 {// Tote in system, checking status
                     toteid = GetToteId(Tote);
                     locationIn = GetLocationId(Tote);
+
                     statusIn = GetStatusId(toteid);
                     if (IsToteFloating(Tote))
                     {// If Tote is Floating, then update location to location provided
-                        UpdateLocation(toteid, locationOut);
-                        UpdateStatus(toteid, statusAllocated);
-                        InsertTransaction(toteid, Tote, location, locationIn, locationOut, transactionTypeUpdate, Dns.GetHostName(),
-                                         GetStatusId(toteid), GetStatusId(toteid), Tools.GetLocalIPAddress(), Failed, version);
+                        UpdateStatusLocation(toteid, statusOut, locationOut);
+                       
+                        MsgTypes.printme(MsgTypes.msg_failure, String.Format(message5, Tote, locationIn,locationOut), commingFrom);
                         return true;
                     }else
                     {// if tote is Allocated, then return warning message without updating location
                         MsgTypes.printme(MsgTypes.msg_failure, String.Format(message3,Tote,GetLocation(Tote)), commingFrom);
-                        InsertTransaction(toteid,Tote,location, locationIn, locationOut, transactionTypeInsert, Dns.GetHostName(), 
-                                          GetStatusId(toteid), GetStatusId(toteid), Tools.GetLocalIPAddress(), Failed,version);
+                        InsertTransaction(toteid,Tote,location, locationIn, locationOut, TransactionType.transactionTypeInsert, Dns.GetHostName(), 
+                                          GetStatusId(toteid), GetStatusId(toteid), Tools.GetLocalIPAddress(), TransactionType.Failed,version);
                         return false;
                     }
                 }else
                 {// Tote not in system, inserting new Tote
-                    InsertTote(Tote, locationOut, Dns.GetHostName(),statusAllocated);
+                    InsertTote(Tote, locationOut, Dns.GetHostName(), Status.statusAllocated);
                     toteid = GetToteId(Tote);
                     MsgTypes.printme(MsgTypes.msg_success,String.Format(message2,Tote,location),commingFrom);
                     return true;
                 }
-                return true;
+        
             }
             catch(Exception ex)
             {
                 MsgTypes.printme(MsgTypes.msg_failure, "Could not allocate tote " + Tote, commingFrom);
                 MsgTypes.printme(MsgTypes.msg_failure, String.Format(message3, Tote, GetLocation(Tote)), commingFrom);
-                InsertTransaction(toteid,Tote,location, statusIn, statusOut, transactionTypeInsert, Dns.GetHostName(),
-                                  GetStatusId(toteid), GetStatusId(toteid), Tools.GetLocalIPAddress(), Failed,version);
+                InsertTransaction(toteid,Tote,location, statusIn, statusOut, TransactionType.transactionTypeInsert, Dns.GetHostName(),
+                                  GetStatusId(toteid), GetStatusId(toteid), Tools.GetLocalIPAddress(), TransactionType.Failed,version);
+                Console.WriteLine(ex);
                 return false;
             }
             
         }
-        public bool ReleaseTote(int ToteId, string hostname)
+        public bool ReleaseTote(int toteid)
         {
-            UpdateLocation(ToteId, 2);
-            UpdateStatus(ToteId, 1);
+            UpdateStatusLocation(toteid, 2, 1);
+            MsgTypes.printme(MsgTypes.msg_success, String.Format(message7, GetToteName(toteid)), commingFrom);
+            return true;
+        }
+        public bool ReleaseTote(string Tote)
+        {
+            int toteid = GetToteId(Tote);
+
+            UpdateStatusLocation(toteid, 2, 1);
+            MsgTypes.printme(MsgTypes.msg_success, String.Format(message7, Tote), commingFrom);
             return true;
         }
         public bool Shiptote()
@@ -154,10 +146,10 @@ namespace NFLWarehouse.Classes
             int toteid = GetToteId(Tote);
             int statusIn = GetStatusId(toteid);
             int statusOut = statusId;
-            int locationIn = locationNone;
+            int locationIn = Location.None;
             int locationOut = LocationId;
             string ip = Tools.GetLocalIPAddress();
-            int transactionType = transactionTypeInsert;
+            int transactionType = TransactionType.transactionTypeInsert;
             
             string sql;
             try
@@ -178,12 +170,47 @@ namespace NFLWarehouse.Classes
                 };
                 ExecuteReader(sql, parameters);
                 toteid = GetToteId(Tote);
-                InsertTransaction(toteid,Tote,"", locationIn, locationOut, transactionType, hostname, statusIn, statusOut, ip,Succeeded,version);
+                InsertTransaction(toteid,Tote,"", locationIn, locationOut, transactionType, hostname, statusIn, statusOut, ip, TransactionType.Succeeded,version);
                 return true;
             }
             catch(Exception ex)
             {
-                InsertTransaction(toteid, Tote,"",locationIn, locationOut, transactionType, hostname, statusIn, statusOut, ip, Failed,version);
+                InsertTransaction(toteid, Tote,"",locationIn, locationOut, transactionType, hostname, statusIn, statusOut, ip, TransactionType.Failed,version);
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+        public bool UpdateStatusLocation(int ToteId, int StatusId, int LocationId)
+        {
+            string sql;
+            int locationIn = GetToteLocationId(GetToteName(ToteId));
+            int locationOut = LocationId;
+            int statusIn = GetStatusId(ToteId);
+            int statusOut = StatusId;
+            try
+            {
+                sql = "UPDATE dbo.tbl_NFLWarehouse_Tote SET StatusId = @StatusId, LocationId = @LocationId, " +
+                      "ModifiedOn = @ModifiedOn, ModifiedBy = @ModifiedBy WHERE ToteId = @ToteId";
+                var parameters = new List<SqlParameter>
+                { 
+                    new SqlParameter("@StatusId", StatusId),
+                    new SqlParameter("@LocationId", LocationId),
+                    new SqlParameter("@ToteId", ToteId),
+                    new SqlParameter("@ModifiedOn", DateTime.Now),
+                    new SqlParameter("@ModifiedBy", Dns.GetHostName())
+                };
+                ExecuteReader(sql, parameters);
+                InsertTransaction(ToteId, GetToteName(ToteId), GetLocationName(LocationId), locationIn,
+                    locationOut, TransactionType.transactionTypeUpdate, Dns.GetHostName(), statusIn, statusOut,
+                    Tools.GetLocalIPAddress(), TransactionType.Succeeded, version);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                InsertTransaction(ToteId, GetToteName(ToteId), GetLocationName(LocationId), locationIn,
+                   locationOut, TransactionType.transactionTypeUpdate, Dns.GetHostName(), statusIn, statusOut,
+                   Tools.GetLocalIPAddress(), TransactionType.Succeeded, version);
+                Console.WriteLine(ex);
                 return false;
             }
         }
@@ -192,14 +219,26 @@ namespace NFLWarehouse.Classes
             string sql;
             try
             {
-                sql = "UPATE dbo.tbl_NFLWarehouse_Tote SET LocationId = @LocationId WHERE TOTE.ToteId = @ToteId";
+                sql = "UPDATE dbo.tbl_NFLWarehouse_Tote SET LocationId = @LocationId," +
+                      "ModifiedOn = @ModifiedOn, ModifiedBy = @ModifiedBy WHERE ToteId = @ToteId";
                 var parameters = new List<SqlParameter> 
-                { new SqlParameter("@LocationId", LocationId),
-                  new SqlParameter("@ToteId", ToteId) };
+                { 
+                    new SqlParameter("@LocationId", LocationId),
+                    new SqlParameter("@ToteId", ToteId),
+                    new SqlParameter("@ModifiedOn", DateTime.Now),
+                    new SqlParameter("@ModifiedBy", Dns.GetHostName())
+                };
                 ExecuteReader(sql, parameters);
+                InsertTransaction(ToteId, GetToteName(ToteId), GetLocationName(LocationId),GetToteLocationId(GetToteName(ToteId)),
+                    LocationId, TransactionType.transactionTypeUpdate, Dns.GetHostName(), GetStatusId(ToteId), GetStatusId(ToteId),
+                    Tools.GetLocalIPAddress(), TransactionType.Succeeded, version);
                 return true;
             }catch(Exception ex)
             {
+                InsertTransaction(ToteId, GetToteName(ToteId), GetLocationName(LocationId), GetToteLocationId(GetToteName(ToteId)),
+                   LocationId, TransactionType.transactionTypeUpdate, Dns.GetHostName(), GetStatusId(ToteId), Status.statusFloating,
+                   Tools.GetLocalIPAddress(), TransactionType.Failed, version);
+                Console.WriteLine(ex);
                 return false;
             }
         }
@@ -217,17 +256,23 @@ namespace NFLWarehouse.Classes
          
             try
             {
-                sql = "UPATE dbo.tbl_NFLWarehouse_Tote SET StatusId = @StatusId WHERE TOTE.ToteId = @ToteId";
+                sql = "UPDATE dbo.tbl_NFLWarehouse_Tote SET StatusId = @StatusId," +
+                      "ModifiedOn = @ModifiedOn, ModifiedBy = @ModifiedBy WHERE ToteId = @ToteId";
                 var parameters = new List<SqlParameter>
-                { new SqlParameter("@StatusId", StatusId),
-                  new SqlParameter("@ToteId", ToteId) };
+                { 
+                    new SqlParameter("@StatusId", StatusId),
+                    new SqlParameter("@ToteId", ToteId),
+                    new SqlParameter("@ModifiedOn", DateTime.Now),
+                    new SqlParameter("@ModifiedBy", Dns.GetHostName())
+                };
                 ExecuteReader(sql, parameters);
-                InsertTransaction(ToteId,Tote, "",locationIn, locationOut,transactionTypeUpdate, hostname, statusIn, statusOut,ip,Succeeded,version);
+                InsertTransaction(ToteId,Tote, "",locationIn, locationOut, TransactionType.transactionTypeUpdate, hostname, statusIn, statusOut,ip, TransactionType.Succeeded,version);
                 return true;
             }
             catch (Exception ex)
             {
-                InsertTransaction(ToteId, Tote,"",locationIn, locationOut, transactionTypeUpdate, hostname, statusIn, statusOut,ip,Failed,version);
+                InsertTransaction(ToteId, Tote,"",locationIn, locationOut, TransactionType.transactionTypeUpdate, hostname, statusIn, statusOut,ip, TransactionType.Failed,version);
+                Console.WriteLine(ex);
                 return false;
             }
         }
@@ -260,6 +305,7 @@ namespace NFLWarehouse.Classes
             catch (Exception ex)
             {
                 MsgTypes.printme(MsgTypes.msg_failure, message4, commingFrom);
+                Console.WriteLine(ex);
                 return false;
             }
 
@@ -273,7 +319,7 @@ namespace NFLWarehouse.Classes
         {
             try
             {
-                string sql = "SELECT StatusId FROM tbl_NFLWarehouse_Tote TOTE WHERE TOTE.Name = '@Name'";
+                string sql = "SELECT StatusId FROM tbl_NFLWarehouse_Tote TOTE WHERE TOTE.Name = @Name";
                 var parameters = new List<SqlParameter>
                 { new SqlParameter("@Name",Tote)};
                 var rows = ExecuteReader(sql, parameters);
@@ -296,6 +342,7 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
         }
@@ -318,6 +365,7 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
         }
@@ -340,6 +388,7 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return 0;
             }
         }
@@ -362,6 +411,7 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return "";
             }
         }
@@ -371,14 +421,13 @@ namespace NFLWarehouse.Classes
             {
                 int toteid = GetToteId(Tote);
                 int locationid = GetLocationId(toteid);
-
+            
                 string sql = "SELECT Name FROM dbo.tbl_NFLWarehouse_Master_Location WHERE locationId = @locationId";
                 var parameters = new List<SqlParameter>
                 { new SqlParameter("@locationId",locationid)};
                 var rows = ExecuteReader(sql, parameters);
                 if (rows.Count > 0)
                 {
-                   
                     return rows[0].FieldValues[0].ToString();
                 }
                 else
@@ -388,7 +437,22 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return "";
+            }
+        }
+        public int GetToteLocationId(string Tote)
+        {
+            try
+            {
+                int toteid = GetToteId(Tote);
+                int locationid = GetLocationId(toteid);
+                return locationid;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return 0;
             }
         }
         public int GetStatusId(int toteid)
@@ -413,6 +477,7 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return 0;
             }
         }
@@ -438,6 +503,7 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return 0;
             }
         }
@@ -463,6 +529,8 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                MsgTypes.printme(MsgTypes.msg_failure, String.Format(message6, "querying location."), commingFrom);
+                Console.WriteLine(ex);
                 return false;
             }
         }
@@ -488,6 +556,7 @@ namespace NFLWarehouse.Classes
             }
             catch(Exception ex)
             {
+                Console.WriteLine(ex);
                 return 0;
             }
         }
@@ -510,6 +579,7 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return "";
             }
         }

@@ -17,21 +17,20 @@ namespace NFLWarehouse.Forms
     {
 
         #region Global Variables
+        // Workstation Configuration
         private string toolName = "NFL Warehouse";
         private string stationName = "Scan In Station";
-        private string processName = "Scan In";
-        private string instruction1 = "1 Scan Tote Number";
-        private string instruction2 = "2 Scan the location barcode where the item is being stored";
+        private System.Windows.Forms.Form commingFrom;
         private string hostname = Dns.GetHostName();
         private Color titleColor = Color.Yellow;
+        // Database Connection
         private NFLWarehouseDB nflwarehouseDB;
-        private System.Windows.Forms.Form commingFrom;
-        public bool flag = false;
-
         // Messages
         string message1 = "Tool shutting down.";
         string message2 = "Connecting to NFL databse, please wait...";
-
+        // Instructions
+        private string instruction1 = "1 Scan Tote Number";
+        private string instruction2 = "2 Scan the location barcode where the item is being stored";
         #endregion
 
 
@@ -42,7 +41,7 @@ namespace NFLWarehouse.Forms
         public FrmScanIn(System.Windows.Forms.Form commingFrom)
         {
             InitializeComponent();
-           
+            this.commingFrom = commingFrom;
         }
 
 
@@ -59,6 +58,30 @@ namespace NFLWarehouse.Forms
         {
             nflwarehouseDB.AllocateTote(GetTote(), GetLocation());
             ClearForm();
+        }
+        public void ActionSwitch()
+        {
+            this.Hide();
+            if(commingFrom is null)
+            {
+                if (this.Name.Contains("ScanIn"))
+                {
+                    FrmScanout frm = new FrmScanout(this);
+                    this.commingFrom = frm;
+                    frm.Show();
+                }
+                else
+                {
+                    FrmScanIn frm = new FrmScanIn(this);
+                    this.commingFrom = frm;
+                    frm.Show();
+                }
+            }
+            else
+            {
+                commingFrom.Show();
+            }
+          
         }
         #endregion
 
@@ -79,7 +102,6 @@ namespace NFLWarehouse.Forms
             nflwarehouseDB = new NFLWarehouseDB(this);
             blockForm();
             await nflwarehouseDB.OpenAsync();
-           
         }
         private string GetTote()
         {
@@ -111,6 +133,7 @@ namespace NFLWarehouse.Forms
         }
         private void pictureWindowClose_Click(object sender, EventArgs e)
         {
+            Application.Exit();
             this.Close();
         }
         private void pictureWindowNormal_Click(object sender, EventArgs e)
@@ -152,6 +175,14 @@ namespace NFLWarehouse.Forms
         private void FrmScanIn_FormClosing(object sender, FormClosingEventArgs e)
         {
             MsgTypes.printme(MsgTypes.msg_success, message1, this);
+        }
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+        private void pictureSwitch_Click(object sender, EventArgs e)
+        {
+            ActionSwitch();
         }
         // Custom
         private void SetColorTextBoxSelected(TextBox t)
@@ -265,6 +296,6 @@ namespace NFLWarehouse.Forms
         }
         #endregion
 
-    
+  
     }
 }

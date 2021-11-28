@@ -30,7 +30,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationRevision>26</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -105,11 +105,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ConnectionStringManager.cs" />
+    <Compile Include="Classes\Location.cs" />
     <Compile Include="Classes\MsgTypes.cs" />
     <Compile Include="Classes\NFLWarehouseDB.cs" />
     <Compile Include="Classes\SqlHelper.cs" />
     <Compile Include="Classes\SqlTableRow.cs" />
+    <Compile Include="Classes\Status.cs" />
     <Compile Include="Classes\Tools.cs" />
+    <Compile Include="Classes\TransactionType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +190,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="icons\scanin.png" />
+    <None Include="icons\scanout.png" />
+    <Content Include="Tests\Tests.txt" />
     <None Include="icons\minimize_1.png" />
     <None Include="icons\maximize.png" />
     <None Include="icons\close_1.png" />

@@ -15,25 +15,31 @@ namespace NFLWarehouse.Forms
     public partial class FrmScanout : Form
     {
         #region Global Variables
+        // Workstation Configuration
         private string toolName = "NFL Warehouse";
         private string stationName = "Scan Out Station";
-        private string processName = "Scan Out";
         private string instruction1 = "1 Scan Tote Number";
         private string instruction2 = "";
         private string hostname = Dns.GetHostName();
         private Color titleColor = Color.OrangeRed;
         private System.Windows.Forms.Form commingFrom;
+        // Database Connection
+        private NFLWarehouseDB nflwarehouseDB;
+        // Messages
+        //string message1 = "Tool shutting down.";
+        string message2 = "Connecting to NFL databse, please wait...";
         #endregion
 
+        public FrmScanout()
+        {
+            InitializeComponent();
+        }
         public FrmScanout(System.Windows.Forms.Form commingFrom)
         {
             InitializeComponent();
             this.commingFrom = commingFrom;
         }
-        public FrmScanout()
-        {
-            InitializeComponent();
-        }
+        
 
 
         #region Logic
@@ -41,7 +47,35 @@ namespace NFLWarehouse.Forms
         #endregion
 
         #region Actions
+        public void ActionScanout()
+        {
+            nflwarehouseDB.ReleaseTote(GetTote());
+            ClearForm();
+        }
+        public void ActionSwitch()
+        {
+            this.Hide();
+            if (commingFrom is null)
+            {
+                if (this.Name.Contains("ScanIn"))
+                {
+                    FrmScanout frm = new FrmScanout(this);
+                    this.commingFrom = frm;
+                    frm.Show();
+                }
+                else
+                {
+                    FrmScanIn frm = new FrmScanIn(this);
+                    this.commingFrom = frm;
+                    frm.Show();
+                }
+            }
+            else
+            {
+                commingFrom.Show();
+            }
 
+        }
         #endregion
 
         #region Cosmetics
@@ -53,9 +87,14 @@ namespace NFLWarehouse.Forms
 
 
         #region Controls
-        private void FrmScanout_Load(object sender, EventArgs e)
+        // Standard
+        private async void FrmScanout_Load(object sender, EventArgs e)
         {
             initForm();
+            MsgTypes.printme(MsgTypes.msg_success, message2, this);
+            nflwarehouseDB = new NFLWarehouseDB(this);
+            blockForm();
+            await nflwarehouseDB.OpenAsync();
         }
         public void initForm()
         {
@@ -78,6 +117,7 @@ namespace NFLWarehouse.Forms
         }
         private void pictureWindowClose_Click(object sender, EventArgs e)
         {
+            Application.Exit();
             this.Close();
         }
         private void pictureWindowNormal_Click(object sender, EventArgs e)
@@ -102,6 +142,44 @@ namespace NFLWarehouse.Forms
         private void textBoxTote_Leave(object sender, EventArgs e)
         {
             SetColorTextBoxReleased((TextBox)sender);
+        }
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            ActionScanout();
+        }
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+        private void pictureSwitch_Click(object sender, EventArgs e)
+        {
+            ActionSwitch();
+        }
+        // Customized
+        private string GetTote()
+        {
+            return textBoxTote.Text;
+        }
+        public void ClearForm()
+        {
+            textBoxTote.Clear();
+            textBoxLocation.Clear();
+        }
+        public void blockForm()
+        {
+            textBoxTote.Enabled = false;
+            textBoxLocation.Enabled = false;
+            buttonConfirm.Enabled = false;
+            buttonClear.Enabled = false;
+            this.UseWaitCursor = true;
+        }
+        public void releaseForm()
+        {
+            textBoxTote.Enabled = true;
+            textBoxLocation.Enabled = true;
+            buttonConfirm.Enabled = true;
+            buttonClear.Enabled = true;
+            this.UseWaitCursor = false;
         }
         private void SetColorTextBoxSelected(TextBox t)
         {
@@ -191,8 +269,12 @@ namespace NFLWarehouse.Forms
                                           this.Location.Y + (e.Location.Y - Moveform_MousePosition.Y));
             }
         }
+
+
+
+
         #endregion
 
-     
+      
     }
 }

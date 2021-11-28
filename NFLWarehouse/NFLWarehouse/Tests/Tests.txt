@@ -1,0 +1,91 @@
+﻿
+
+
+----------------------------------------------
+Test 1: Release Tote REC-01701. 
+
+LocationIn	= 3
+StatusIn	= 1
+
+LocationOut = 1
+StatusOut	= 1
+
+Result: FAIL. Status must end in 2 'Floating' after Scan out
+
+
+----------------------------------------------
+Test 2: Release Tote REC-01896. 
+
+LocationIn	= 2
+StatusIn	= 1
+
+LocationOut = 1
+StatusOut	= 2
+
+Result: PASS.
+
+----------------------------------------------
+Test 3: Allocate Tote REC-01896
+
+LocationIn	= 1
+StatusIn	= 2
+
+LocationOut = 3
+StatusOut	= 1
+
+Result: Failed. Marked that tote was already allocated in None
+
+Retest: Allocate Tote REC-01896
+
+LocationIn	= 1
+StatusIn	= 2
+
+LocationOut = 3
+StatusOut	= 1
+
+Result: Passed. Conditional, trasaction recorded Incoming Location 3 Outgoing Location 3
+
+----------------------------------------------
+Test 4: Releaset Tote REC-01862
+
+LocationIn	= 3
+StatusIn	= 1
+
+LocationOut = 1
+StatusOut	= 2
+
+Result: Pass. Conditional, transaction recorded incoming all equal. in and out.
+
+----------------------------------------------
+Test 5: Allocate Tote REC-01862
+
+LocationIn	= 1
+StatusIn	= 2
+
+LocationOut = 3
+StatusOut	= 1
+
+Result: Pass. Conditional. Did not recorded the change of location correctly.
+
+----------------------------------------------
+Test 6: Allocate Tote RFS-01512
+
+LocationIn	= 0
+StatusIn	= 0
+
+LocationOut = 2
+StatusOut	= 1
+
+Result: Pass. Transaction recorded good.
+
+----------------------------------------------
+Test 7: Release Tote RFS-01512
+
+LocationIn	= 2
+StatusIn	= 1
+
+LocationOut = 1
+StatusOut	= 2
+
+Result: Pass. Transactions recorded good.
+
