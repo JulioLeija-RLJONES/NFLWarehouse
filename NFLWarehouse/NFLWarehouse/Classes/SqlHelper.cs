@@ -77,9 +77,14 @@ namespace NFLWarehouse.Classes
                     NFLWarehouse.Forms.FrmScanIn frm = (NFLWarehouse.Forms.FrmScanIn)commingFrom;
                     frm.releaseForm();
                 }
-                else
+                else if(commingFrom.Text.Contains("Scan Out Station"))
                 {
                     NFLWarehouse.Forms.FrmScanout frm = (NFLWarehouse.Forms.FrmScanout)commingFrom;
+                    frm.releaseForm();
+                }
+                else if(commingFrom.Text.Contains("Shipping"))
+                {
+                    NFLWarehouse.Forms.FrmShipping frm = (NFLWarehouse.Forms.FrmShipping)commingFrom;
                     frm.releaseForm();
                 }
             }

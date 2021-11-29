@@ -25,6 +25,10 @@ namespace NFLWarehouse.Classes
         string message5 = "Tote {0} location updated from {1} to {2}";
         string message6 = "Database unreachable when {}";
         string message7 = "Tote {0} is now floating, transfer it to its destination.";
+        string message8 = "Tote {0} is now set as shipped, take it to loading process.";
+        string message9 = "Tote {0} is still allocated, if tote needs to be shipped, scan it out first.";
+        string message10 = "Tote {0} is already Shipped!, notify supervisor about this Tote.";
+        string message11 = "Tote {0} is looping back from Shipping status, allocating in {1}";
         #endregion
 
         public NFLWarehouseDB(): base("nfl")
@@ -58,8 +62,8 @@ namespace NFLWarehouse.Classes
         {
             int locationIn = Location.None;
             int locationOut = Location.None;
-            int statusIn = Status.statusNone;
-            int statusOut = Status.statusNone;
+            int statusIn = GetStatusId(GetToteId(Tote));
+            int statusOut = Status.statusAllocated;
             int toteid = 0;
 
             //Checking if provided location exists.
@@ -85,11 +89,19 @@ namespace NFLWarehouse.Classes
                     locationIn = GetLocationId(Tote);
 
                     statusIn = GetStatusId(toteid);
-                    if (IsToteFloating(Tote))
+                    if (IsToteFloating(Tote) || IsToteShipped(Tote))
                     {// If Tote is Floating, then update location to location provided
+
                         UpdateStatusLocation(toteid, statusOut, locationOut);
-                       
-                        MsgTypes.printme(MsgTypes.msg_failure, String.Format(message5, Tote, locationIn,locationOut), commingFrom);
+
+                        if (statusIn == Status.statusShipped)
+                        {
+                            MsgTypes.printme(MsgTypes.msg_failure, String.Format(message11, Tote, location), commingFrom);
+                        }
+                        else
+                        {
+                            MsgTypes.printme(MsgTypes.msg_failure, String.Format(message5, Tote, locationIn,locationOut), commingFrom);
+                        }
                         return true;
                     }else
                     {// if tote is Allocated, then return warning message without updating location
@@ -132,10 +144,33 @@ namespace NFLWarehouse.Classes
             MsgTypes.printme(MsgTypes.msg_success, String.Format(message7, Tote), commingFrom);
             return true;
         }
-        public bool Shiptote()
+        public bool ShipTote(string Tote)
         {
-            return true;
+            int toteid = GetToteId(Tote);
+
+            if(GetStatusId(toteid)== Status.statusFloating)
+            {
+                UpdateStatusLocation(toteid, Status.statusShipped, Location.None);
+                MsgTypes.printme(MsgTypes.msg_success, String.Format(message8, Tote), commingFrom);
+                return true;
+            }else if(GetStatusId(toteid) == Status.statusShipped)
+            {
+                MsgTypes.printme(MsgTypes.msg_success, String.Format(message10, Tote), commingFrom);
+                InsertTransaction(toteid, Tote, GetLocationName(Location.None), GetLocationId(toteid), Location.None,
+                    TransactionType.transactionTypeUpdate, Dns.GetHostName(), GetStatusId(toteid), Status.statusShipped, Tools.GetLocalIPAddress(),
+                    TransactionType.Failed, version);
+                return false;
+            }
+            else
+            {
+                MsgTypes.printme(MsgTypes.msg_success, String.Format(message9, Tote), commingFrom);
+                InsertTransaction(toteid, Tote, GetLocationName(Location.None), GetLocationId(toteid), Location.None,
+                    TransactionType.transactionTypeUpdate, Dns.GetHostName(), GetStatusId(toteid), Status.statusShipped, Tools.GetLocalIPAddress(),
+                    TransactionType.Failed, version);
+                return false;
+            }
         }
+     
         #endregion
 
 
@@ -327,6 +362,37 @@ namespace NFLWarehouse.Classes
                 {
                     int statusid = Int32.Parse(rows[0].FieldValues[0].ToString());
                     if(statusid == 2)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+        public bool IsToteShipped(string Tote)
+        {
+            try
+            {
+                string sql = "SELECT StatusId FROM tbl_NFLWarehouse_Tote TOTE WHERE TOTE.Name = @Name";
+                var parameters = new List<SqlParameter>
+                { new SqlParameter("@Name",Tote)};
+                var rows = ExecuteReader(sql, parameters);
+                if (rows.Count > 0)
+                {
+                    int statusid = Int32.Parse(rows[0].FieldValues[0].ToString());
+                    if (statusid == 3)
                     {
                         return true;
                     }

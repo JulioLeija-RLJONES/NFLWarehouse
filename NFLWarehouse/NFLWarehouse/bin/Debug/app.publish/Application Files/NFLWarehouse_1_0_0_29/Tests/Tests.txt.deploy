@@ -95,3 +95,45 @@ Test 7: Allocate an allocated Tote.
 Message: The tote is already allocated + unsuccessful allocation transaction record.
 
 Result: PASS
+
+
+----------------------------------------------
+Test 8 : Ship tote RFC-01523 which is in status Allocated
+
+LocationIn	= 2
+StatusIn	= 1
+
+LocationOut = 2
+StatusOut	= 1
+
+Message: Tote is still allocated, please scan it out first.
+
+Result: Passed. Location and status remained and transaction recorded ok.
+
+----------------------------------------------
+Test 9 : Scan out RFC-01523 which is in status Allocated
+
+LocationIn	= 2
+StatusIn	= 1
+
+LocationOut = 1
+StatusOut	= 2
+
+Message: tote now floating.
+
+Result: Failed. Location did not update to 1, which is none.
+
+----------------------------------------------
+Test 10 : Scan out RFC-02014 which is in status Allocated and the Ship.
+
+LocationIn	= 2
+StatusIn	= 1
+
+LocationOut = 1
+StatusOut	= 2
+
+Message: tote now floating.
+
+Result: Failed. Location did not update to 1, which is none.
+
+

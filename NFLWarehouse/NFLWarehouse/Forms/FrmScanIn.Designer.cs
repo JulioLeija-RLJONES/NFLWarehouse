@@ -44,6 +44,8 @@ namespace NFLWarehouse.Forms
             this.checkedListBoxValidations = new System.Windows.Forms.CheckedListBox();
             this.labelProcessName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBoxScanout = new System.Windows.Forms.PictureBox();
+            this.pictureBoxShipping = new System.Windows.Forms.PictureBox();
             this.pictureSwitch = new System.Windows.Forms.PictureBox();
             this.pictureWindowMinimize = new System.Windows.Forms.PictureBox();
             this.pictureWindowNormal = new System.Windows.Forms.PictureBox();
@@ -55,6 +57,8 @@ namespace NFLWarehouse.Forms
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScanout)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShipping)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).BeginInit();
@@ -230,6 +234,8 @@ namespace NFLWarehouse.Forms
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel4.Controls.Add(this.pictureBoxScanout);
+            this.panel4.Controls.Add(this.pictureBoxShipping);
             this.panel4.Controls.Add(this.pictureSwitch);
             this.panel4.Controls.Add(this.pictureWindowMinimize);
             this.panel4.Controls.Add(this.pictureWindowNormal);
@@ -245,15 +251,38 @@ namespace NFLWarehouse.Forms
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
             this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseUp);
             // 
+            // pictureBoxScanout
+            // 
+            this.pictureBoxScanout.Image = global::NFLWarehouse.Properties.Resources.scanout;
+            this.pictureBoxScanout.Location = new System.Drawing.Point(892, 4);
+            this.pictureBoxScanout.Name = "pictureBoxScanout";
+            this.pictureBoxScanout.Size = new System.Drawing.Size(40, 37);
+            this.pictureBoxScanout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxScanout.TabIndex = 9;
+            this.pictureBoxScanout.TabStop = false;
+            this.pictureBoxScanout.Click += new System.EventHandler(this.pictureBoxScanout_Click);
+            // 
+            // pictureBoxShipping
+            // 
+            this.pictureBoxShipping.Image = global::NFLWarehouse.Properties.Resources.shipping;
+            this.pictureBoxShipping.Location = new System.Drawing.Point(848, 4);
+            this.pictureBoxShipping.Name = "pictureBoxShipping";
+            this.pictureBoxShipping.Size = new System.Drawing.Size(40, 37);
+            this.pictureBoxShipping.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxShipping.TabIndex = 8;
+            this.pictureBoxShipping.TabStop = false;
+            this.pictureBoxShipping.Click += new System.EventHandler(this.pictureBoxShipping_Click);
+            // 
             // pictureSwitch
             // 
             this.pictureSwitch.Image = global::NFLWarehouse.Properties.Resources.scanout;
-            this.pictureSwitch.Location = new System.Drawing.Point(893, 4);
+            this.pictureSwitch.Location = new System.Drawing.Point(658, 4);
             this.pictureSwitch.Name = "pictureSwitch";
             this.pictureSwitch.Size = new System.Drawing.Size(40, 37);
             this.pictureSwitch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureSwitch.TabIndex = 7;
             this.pictureSwitch.TabStop = false;
+            this.pictureSwitch.Visible = false;
             this.pictureSwitch.Click += new System.EventHandler(this.pictureSwitch_Click);
             // 
             // pictureWindowMinimize
@@ -357,6 +386,8 @@ namespace NFLWarehouse.Forms
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScanout)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShipping)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).EndInit();
@@ -391,5 +422,7 @@ namespace NFLWarehouse.Forms
         private System.Windows.Forms.PictureBox pictureWindowNormal;
         private System.Windows.Forms.PictureBox pictureWindowClose;
         private System.Windows.Forms.PictureBox pictureSwitch;
+        private System.Windows.Forms.PictureBox pictureBoxShipping;
+        private System.Windows.Forms.PictureBox pictureBoxScanout;
     }
 }

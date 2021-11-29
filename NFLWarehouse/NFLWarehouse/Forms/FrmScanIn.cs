@@ -23,6 +23,10 @@ namespace NFLWarehouse.Forms
         private System.Windows.Forms.Form commingFrom;
         private string hostname = Dns.GetHostName();
         private Color titleColor = Color.Yellow;
+
+        private FrmScanIn scanin;
+        private FrmScanout scanout;
+        private FrmShipping shipping;
         // Database Connection
         private NFLWarehouseDB nflwarehouseDB;
         // Messages
@@ -35,6 +39,7 @@ namespace NFLWarehouse.Forms
         #endregion
 
 
+
         public FrmScanIn()
         {
             InitializeComponent();
@@ -44,7 +49,13 @@ namespace NFLWarehouse.Forms
             InitializeComponent();
             this.commingFrom = commingFrom;
         }
-
+        public FrmScanIn(FrmScanIn scanin, FrmScanout scanout, FrmShipping shipping)
+        {
+            InitializeComponent();
+            this.scanin = scanin;
+            this.scanout = scanout;
+            this.shipping = shipping;
+        }
 
 
         #region Logic
@@ -72,15 +83,15 @@ namespace NFLWarehouse.Forms
         public void ActionSwitch()
         {
             this.Hide();
-            if(commingFrom is null)
+            if (commingFrom is null)
             {
-                if (this.Name.Contains("ScanIn"))
+                if (this.Name.Contains("Scanin"))
                 {
                     FrmScanout frm = new FrmScanout(this);
                     this.commingFrom = frm;
                     frm.Show();
                 }
-                else
+                else if (this.Name.Contains("Scanout") || this.Name.Contains("Shipping"))
                 {
                     FrmScanIn frm = new FrmScanIn(this);
                     this.commingFrom = frm;
@@ -91,7 +102,50 @@ namespace NFLWarehouse.Forms
             {
                 commingFrom.Show();
             }
-          
+
+        }
+        public void Navigate(Object sender)
+        {
+            this.Hide();
+            if (((Control)sender).Name.Contains("Scanin"))
+            {
+                if (this.scanin == null)
+                {
+                    FrmScanIn scanin = new FrmScanIn(this);
+                    this.scanin = scanin;
+                    scanin.Show();
+                }
+                else
+                {
+                    this.scanin.Show();
+                }
+            }
+            else if (((Control)sender).Name.Contains("Shipping"))
+            {
+                if (this.shipping == null)
+                {
+                    FrmShipping shipping = new FrmShipping(this,this.scanout,this.shipping);
+                    this.shipping = shipping;
+                    shipping.Show();
+                }
+                else
+                {
+                    this.shipping.Show();
+                }
+            }
+            else if (((Control)sender).Name.Contains("Scanout"))
+            {
+                if (this.scanout == null)
+                {
+                    FrmScanout scanout = new FrmScanout(this);
+                    this.scanout = scanout;
+                    scanout.Show();
+                }
+                else
+                {
+                    this.scanout.Show();
+                }
+            }
         }
         #endregion
 
@@ -192,8 +246,17 @@ namespace NFLWarehouse.Forms
         }
         private void pictureSwitch_Click(object sender, EventArgs e)
         {
-            ActionSwitch();
+            Navigate(sender);
         }
+        private void pictureBoxShipping_Click(object sender, EventArgs e)
+        {
+            Navigate(sender);
+        }
+        private void pictureBoxScanout_Click(object sender, EventArgs e)
+        {
+            Navigate(sender);
+        }
+
         // Custom
         private void SetColorTextBoxSelected(TextBox t)
         {
@@ -304,8 +367,11 @@ namespace NFLWarehouse.Forms
                                           this.Location.Y + (e.Location.Y - Moveform_MousePosition.Y));
             }
         }
+
+
+
         #endregion
 
-  
+        
     }
 }

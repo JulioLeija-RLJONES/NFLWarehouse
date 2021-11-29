@@ -12,16 +12,16 @@ using NFLWarehouse.Classes;
 
 namespace NFLWarehouse.Forms
 {
-    public partial class FrmScanout : Form
+    public partial class FrmShipping : Form
     {
         #region Global Variables
         // Workstation Configuration
         private string toolName = "NFL Warehouse";
-        private string stationName = "Scan Out Station";
+        private string stationName = "Shipping Station";
         private string instruction1 = "1 Scan Tote Number";
         private string instruction2 = "";
         private string hostname = Dns.GetHostName();
-        private Color titleColor = Color.OrangeRed;
+        private Color titleColor = Color.White;
         private System.Windows.Forms.Form commingFrom;
 
         private FrmScanIn scanin;
@@ -35,21 +35,22 @@ namespace NFLWarehouse.Forms
         string message3 = "Tote name {0} has invalid nomeclature, please double check and try again.";
         #endregion
 
-        public FrmScanout()
+        public FrmShipping()
         {
             InitializeComponent();
         }
-        public FrmScanout(System.Windows.Forms.Form commingFrom)
+        public FrmShipping(System.Windows.Forms.Form commingFrom)
         {
             InitializeComponent();
             this.commingFrom = commingFrom;
         }
-        public FrmScanout(FrmScanIn scanin)
+        public FrmShipping(FrmScanIn scanin)
         {
             InitializeComponent();
             this.scanin = scanin;
         }
-        public FrmScanout(FrmScanIn scanin, FrmScanout scanout, FrmShipping shipping)
+    
+        public FrmShipping(FrmScanIn scanin, FrmScanout scanout, FrmShipping shipping)
         {
             InitializeComponent();
             this.scanin = scanin;
@@ -58,19 +59,19 @@ namespace NFLWarehouse.Forms
         }
 
 
-
         #region Logic
-
         #endregion
 
+
         #region Actions
-        public void ActionScanout()
+        public void ActionShip()
         {
             if (Tools.IsGoodToteName(GetTote()))
             {
-                nflwarehouseDB.ReleaseTote(GetTote());
+                nflwarehouseDB.ShipTote(GetTote()); 
                 ClearForm();
-            }else
+            }
+            else
             {
                 MsgTypes.printme(MsgTypes.msg_failure, String.Format(message3, GetTote()), this);
                 textBoxTote.Select();
@@ -87,8 +88,7 @@ namespace NFLWarehouse.Forms
                     FrmScanout frm = new FrmScanout(this);
                     this.commingFrom = frm;
                     frm.Show();
-                }
-                else if (this.Name.Contains("Scanout") || this.Name.Contains("Shipping"))
+                }else if(this.Name.Contains("Scanout") || this.Name.Contains("Shipping"))
                 {
                     FrmScanIn frm = new FrmScanIn(this);
                     this.commingFrom = frm;
@@ -108,7 +108,7 @@ namespace NFLWarehouse.Forms
             {
                 if (this.scanin == null)
                 {
-                    FrmScanIn scanin = new FrmScanIn(this.scanin,this,this.shipping);
+                    FrmScanIn scanin = new FrmScanIn(this.scanin,this.scanout,this);
                     this.scanin = scanin;
                     scanin.Show();
                 }
@@ -121,7 +121,7 @@ namespace NFLWarehouse.Forms
             {
                 if (this.shipping == null)
                 {
-                    FrmShipping shipping = new FrmShipping(this.scanin, this, this.shipping);
+                    FrmShipping shipping = new FrmShipping(this.scanin, this.scanout, this);
                     this.shipping = shipping;
                     shipping.Show();
                 }
@@ -134,7 +134,7 @@ namespace NFLWarehouse.Forms
             {
                 if (this.scanout == null)
                 {
-                    FrmScanout scanout = new FrmScanout(this.scanin, this, this.shipping);
+                    FrmScanout scanout = new FrmScanout(this.scanin, this.scanout, this);
                     this.scanout = scanout;
                     scanout.Show();
                 }
@@ -144,19 +144,11 @@ namespace NFLWarehouse.Forms
                 }
             }
         }
-        #endregion
 
-        #region Cosmetics
-        public void CustomizeTitle()
-        {
-            this.labelProcessName.ForeColor = titleColor;
-        }
         #endregion
-
 
         #region Controls
-        // Standard
-        private async void FrmScanout_Load(object sender, EventArgs e)
+        private async void FrmShipping_Load(object sender, EventArgs e)
         {
             initForm();
             MsgTypes.printme(MsgTypes.msg_success, message2, this);
@@ -183,10 +175,13 @@ namespace NFLWarehouse.Forms
                 labelVersion.Text = "verison: Debug";
             }
         }
-        private void pictureWindowClose_Click(object sender, EventArgs e)
+        private void pictureSwitch_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-            this.Close();
+            ActionSwitch();
+        }
+        private void pictureWindowMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
         private void pictureWindowNormal_Click(object sender, EventArgs e)
         {
@@ -199,38 +194,26 @@ namespace NFLWarehouse.Forms
                 this.WindowState = FormWindowState.Maximized;
             }
         }
-        private void pictureWindowMinimize_Click(object sender, EventArgs e)
+        private void pictureWindowClose_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            Application.Exit();
+            this.Close();
+        }
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            ActionShip();
         }
         private void pictureBoxScanin_Click(object sender, EventArgs e)
         {
             Navigate(sender);
         }
-        private void pictureBoxShipping_Click(object sender, EventArgs e)
+        private void pictureBoxScanout_Click(object sender, EventArgs e)
         {
             Navigate(sender);
-        }
-        private void textBoxTote_Enter(object sender, EventArgs e)
-        {
-            SetColorTextBoxSelected((TextBox)sender);
-        }
-        private void textBoxTote_Leave(object sender, EventArgs e)
-        {
-            SetColorTextBoxReleased((TextBox)sender);
-        }
-        private void buttonConfirm_Click(object sender, EventArgs e)
-        {
-            ActionScanout();
-        }
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-        }     
-
-        private void pictureSwitch_Click(object sender, EventArgs e)
-        {
-            ActionSwitch();
         }
         // Customized
         private string GetTote()
@@ -258,15 +241,16 @@ namespace NFLWarehouse.Forms
             buttonClear.Enabled = true;
             this.UseWaitCursor = false;
         }
-        private void SetColorTextBoxSelected(TextBox t)
+        #endregion
+
+        #region Cosmetics
+        public void CustomizeTitle()
         {
-            t.BackColor = Color.Lime;
+            this.labelProcessName.ForeColor = titleColor;
         }
-        private void SetColorTextBoxReleased(TextBox t)
-        {
-            t.BackColor = SystemColors.Window;
-        }
-        #endregion  
+        #endregion
+
+
 
         #region Window Movement
         Boolean Moveform;
@@ -348,8 +332,10 @@ namespace NFLWarehouse.Forms
         }
 
 
+
+
         #endregion
 
-       
+        
     }
 }

@@ -8,6 +8,6 @@ namespace NFLWarehouse.Classes
 {
     static class Location
     {
-        public static int None = 0;
+        public static int None = 1;
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace NFLWarehouse.Forms
 {
-    partial class FrmScanout
+    partial class FrmShipping
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace NFLWarehouse.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmScanout));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShipping));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -47,24 +47,24 @@ namespace NFLWarehouse.Forms
             this.labelToolName = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.prompt = new System.Windows.Forms.RichTextBox();
-            this.pictureBoxShipping = new System.Windows.Forms.PictureBox();
             this.pictureSwitch = new System.Windows.Forms.PictureBox();
             this.pictureWindowMinimize = new System.Windows.Forms.PictureBox();
             this.pictureWindowNormal = new System.Windows.Forms.PictureBox();
             this.pictureWindowClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxScanin = new System.Windows.Forms.PictureBox();
+            this.pictureBoxScanout = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShipping)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScanin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScanout)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -83,7 +83,7 @@ namespace NFLWarehouse.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.4502F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5498F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1081, 590);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutPanel1.TabIndex = 5;
             // 
             // panel3
             // 
@@ -113,7 +113,7 @@ namespace NFLWarehouse.Forms
             // labelVersion
             // 
             this.labelVersion.AutoSize = true;
-            this.labelVersion.BackColor = System.Drawing.Color.Black;
+            this.labelVersion.BackColor = System.Drawing.Color.Maroon;
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.labelVersion.Location = new System.Drawing.Point(940, 445);
             this.labelVersion.Name = "labelVersion";
@@ -187,8 +187,6 @@ namespace NFLWarehouse.Forms
             this.textBoxTote.Name = "textBoxTote";
             this.textBoxTote.Size = new System.Drawing.Size(432, 53);
             this.textBoxTote.TabIndex = 1;
-            this.textBoxTote.Enter += new System.EventHandler(this.textBoxTote_Enter);
-            this.textBoxTote.Leave += new System.EventHandler(this.textBoxTote_Leave);
             // 
             // labelInstruction1
             // 
@@ -231,9 +229,9 @@ namespace NFLWarehouse.Forms
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel4.BackColor = System.Drawing.Color.DarkRed;
+            this.panel4.Controls.Add(this.pictureBoxScanout);
             this.panel4.Controls.Add(this.pictureBoxScanin);
-            this.panel4.Controls.Add(this.pictureBoxShipping);
             this.panel4.Controls.Add(this.pictureSwitch);
             this.panel4.Controls.Add(this.pictureWindowMinimize);
             this.panel4.Controls.Add(this.pictureWindowNormal);
@@ -286,21 +284,10 @@ namespace NFLWarehouse.Forms
             this.prompt.TabStop = false;
             this.prompt.Text = "";
             // 
-            // pictureBoxShipping
-            // 
-            this.pictureBoxShipping.Image = global::NFLWarehouse.Properties.Resources.shipping1;
-            this.pictureBoxShipping.Location = new System.Drawing.Point(848, 4);
-            this.pictureBoxShipping.Name = "pictureBoxShipping";
-            this.pictureBoxShipping.Size = new System.Drawing.Size(40, 37);
-            this.pictureBoxShipping.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxShipping.TabIndex = 6;
-            this.pictureBoxShipping.TabStop = false;
-            this.pictureBoxShipping.Click += new System.EventHandler(this.pictureBoxShipping_Click);
-            // 
             // pictureSwitch
             // 
             this.pictureSwitch.Image = global::NFLWarehouse.Properties.Resources.scanin;
-            this.pictureSwitch.Location = new System.Drawing.Point(534, 4);
+            this.pictureSwitch.Location = new System.Drawing.Point(668, 4);
             this.pictureSwitch.Name = "pictureSwitch";
             this.pictureSwitch.Size = new System.Drawing.Size(40, 37);
             this.pictureSwitch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -358,7 +345,7 @@ namespace NFLWarehouse.Forms
             // pictureBoxScanin
             // 
             this.pictureBoxScanin.Image = global::NFLWarehouse.Properties.Resources.scanin;
-            this.pictureBoxScanin.Location = new System.Drawing.Point(892, 4);
+            this.pictureBoxScanin.Location = new System.Drawing.Point(848, 4);
             this.pictureBoxScanin.Name = "pictureBoxScanin";
             this.pictureBoxScanin.Size = new System.Drawing.Size(40, 37);
             this.pictureBoxScanin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -366,31 +353,42 @@ namespace NFLWarehouse.Forms
             this.pictureBoxScanin.TabStop = false;
             this.pictureBoxScanin.Click += new System.EventHandler(this.pictureBoxScanin_Click);
             // 
-            // FrmScanout
+            // pictureBoxScanout
+            // 
+            this.pictureBoxScanout.Image = global::NFLWarehouse.Properties.Resources.scanout;
+            this.pictureBoxScanout.Location = new System.Drawing.Point(892, 4);
+            this.pictureBoxScanout.Name = "pictureBoxScanout";
+            this.pictureBoxScanout.Size = new System.Drawing.Size(40, 37);
+            this.pictureBoxScanout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxScanout.TabIndex = 8;
+            this.pictureBoxScanout.TabStop = false;
+            this.pictureBoxScanout.Click += new System.EventHandler(this.pictureBoxScanout_Click);
+            // 
+            // FrmShipping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Maroon;
             this.ClientSize = new System.Drawing.Size(1081, 590);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmScanout";
-            this.Text = "FrmScanout";
-            this.Load += new System.EventHandler(this.FrmScanout_Load);
+            this.Name = "FrmShipping";
+            this.Text = "FrmShipping";
+            this.Load += new System.EventHandler(this.FrmShipping_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShipping)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowNormal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureWindowClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScanin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScanout)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -400,6 +398,7 @@ namespace NFLWarehouse.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.TextBox textBoxLocation;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Label labelHostName;
@@ -410,16 +409,15 @@ namespace NFLWarehouse.Forms
         private System.Windows.Forms.CheckedListBox checkedListBoxValidations;
         private System.Windows.Forms.Label labelProcessName;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox pictureSwitch;
         private System.Windows.Forms.PictureBox pictureWindowMinimize;
         private System.Windows.Forms.PictureBox pictureWindowNormal;
         private System.Windows.Forms.PictureBox pictureWindowClose;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.Label labelToolName;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.RichTextBox prompt;
-        private System.Windows.Forms.PictureBox pictureSwitch;
-        private System.Windows.Forms.PictureBox pictureBoxShipping;
         private System.Windows.Forms.PictureBox pictureBoxScanin;
+        private System.Windows.Forms.PictureBox pictureBoxScanout;
     }
 }
