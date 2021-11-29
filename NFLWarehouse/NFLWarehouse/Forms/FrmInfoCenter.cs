@@ -47,6 +47,8 @@ namespace NFLWarehouse.Forms
             labelCreationDate.Text = nflwarehouseDB.GetCreationDate(toteid);
             labelCreatedBy.Text = nflwarehouseDB.GetCreatedBy(toteid);
             MsgTypes.printme(MsgTypes.msg_success, String.Format(message4, Tote), this);
+
+            textBoxTote.SelectAll();
         }
         #endregion 
 
