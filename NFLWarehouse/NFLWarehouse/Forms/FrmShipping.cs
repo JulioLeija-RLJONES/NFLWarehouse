@@ -217,6 +217,11 @@ namespace NFLWarehouse.Forms
         {
             Navigate(sender);
         }
+        private void pictureBoxInfoCenter_Click(object sender, EventArgs e)
+        {
+            FrmInfoCenter frm = new FrmInfoCenter();
+            frm.Show();
+        }
         // Customized
         private string GetTote()
         {
@@ -332,12 +337,8 @@ namespace NFLWarehouse.Forms
                                           this.Location.Y + (e.Location.Y - Moveform_MousePosition.Y));
             }
         }
-
-
-
-
         #endregion
 
-        
+      
     }
 }

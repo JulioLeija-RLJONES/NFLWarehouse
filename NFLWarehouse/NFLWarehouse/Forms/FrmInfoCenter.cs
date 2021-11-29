@@ -12,139 +12,44 @@ using NFLWarehouse.Classes;
 
 namespace NFLWarehouse.Forms
 {
-    public partial class FrmScanout : Form
+    public partial class FrmInfoCenter : Form
     {
-        #region Global Variables
         // Workstation Configuration
         private string toolName = "NFL Warehouse";
-        private string stationName = "Scan Out Station";
-        private string instruction1 = "1 Scan Tote Number";
-        private string instruction2 = "";
+        private string stationName = "InfoCenter";
+        private string instruction1 = "Scan Tote Number";
+        private string instruction2 = "Scan Location";
         private string hostname = Dns.GetHostName();
-        private Color titleColor = Color.OrangeRed;
+        private Color titleColor = Color.White;
         private System.Windows.Forms.Form commingFrom;
-
-        private FrmScanIn scanin;
-        private FrmScanout scanout;
-        private FrmShipping shipping;
         // Database Connection
         private NFLWarehouseDB nflwarehouseDB;
         // Messages
         //string message1 = "Tool shutting down.";
         string message2 = "Connecting to NFL databse, please wait...";
         string message3 = "Tote name {0} has invalid nomeclature, please double check and try again.";
-        #endregion
+        string message4 = "data of {0} retrieved.";
 
-        public FrmScanout()
+
+        public FrmInfoCenter()
         {
             InitializeComponent();
         }
-        public FrmScanout(System.Windows.Forms.Form commingFrom)
-        {
-            InitializeComponent();
-            this.commingFrom = commingFrom;
-        }
-        public FrmScanout(FrmScanIn scanin)
-        {
-            InitializeComponent();
-            this.scanin = scanin;
-        }
-        public FrmScanout(FrmScanIn scanin, FrmScanout scanout, FrmShipping shipping)
-        {
-            InitializeComponent();
-            this.scanin = scanin;
-            this.scanout = scanout;
-            this.shipping = shipping;
-        }
 
-
-
-        #region Logic
-
-        #endregion
 
         #region Actions
-        public void ActionScanout()
+        public void GetInfo(string Tote)
         {
-            if (Tools.IsGoodToteName(GetTote()))
-            {
-                nflwarehouseDB.ReleaseTote(GetTote());
-                ClearForm();
-            }else
-            {
-                MsgTypes.printme(MsgTypes.msg_failure, String.Format(message3, GetTote()), this);
-                textBoxTote.Select();
-                textBoxTote.SelectAll();
-            }
+            int toteid = nflwarehouseDB.GetToteId(Tote);
+            labelTote.Text = Tote;
+            labelLocation.Text = nflwarehouseDB.GetLocation(Tote);
+            labelStatus.Text = nflwarehouseDB.GetStatusName(nflwarehouseDB.GetStatusId(toteid));
+            labelCreationDate.Text = nflwarehouseDB.GetCreationDate(toteid);
+            labelCreatedBy.Text = nflwarehouseDB.GetCreatedBy(toteid);
+            MsgTypes.printme(MsgTypes.msg_success, String.Format(message4, Tote), this);
         }
-        public void ActionSwitch()
-        {
-            this.Hide();
-            if (commingFrom is null)
-            {
-                if (this.Name.Contains("Scanin"))
-                {
-                    FrmScanout frm = new FrmScanout(this);
-                    this.commingFrom = frm;
-                    frm.Show();
-                }
-                else if (this.Name.Contains("Scanout") || this.Name.Contains("Shipping"))
-                {
-                    FrmScanIn frm = new FrmScanIn(this);
-                    this.commingFrom = frm;
-                    frm.Show();
-                }
-            }
-            else
-            {
-                commingFrom.Show();
-            }
+        #endregion 
 
-        }
-        public void Navigate(Object sender)
-        {
-            this.Hide();
-            if (((Control)sender).Name.Contains("Scanin"))
-            {
-                if (this.scanin == null)
-                {
-                    FrmScanIn scanin = new FrmScanIn(this.scanin,this,this.shipping);
-                    this.scanin = scanin;
-                    scanin.Show();
-                }
-                else
-                {
-                    this.scanin.Show();
-                }
-            }
-            else if (((Control)sender).Name.Contains("Shipping"))
-            {
-                if (this.shipping == null)
-                {
-                    FrmShipping shipping = new FrmShipping(this.scanin, this, this.shipping);
-                    this.shipping = shipping;
-                    shipping.Show();
-                }
-                else
-                {
-                    this.shipping.Show();
-                }
-            }
-            else if (((Control)sender).Name.Contains("Scanout"))
-            {
-                if (this.scanout == null)
-                {
-                    FrmScanout scanout = new FrmScanout(this.scanin, this, this.shipping);
-                    this.scanout = scanout;
-                    scanout.Show();
-                }
-                else
-                {
-                    this.scanout.Show();
-                }
-            }
-        }
-        #endregion
 
         #region Cosmetics
         public void CustomizeTitle()
@@ -156,7 +61,7 @@ namespace NFLWarehouse.Forms
 
         #region Controls
         // Standard
-        private async void FrmScanout_Load(object sender, EventArgs e)
+        private async void FrmInfoCenter_Load(object sender, EventArgs e)
         {
             initForm();
             MsgTypes.printme(MsgTypes.msg_success, message2, this);
@@ -164,6 +69,41 @@ namespace NFLWarehouse.Forms
             blockForm();
             await nflwarehouseDB.OpenAsync();
         }
+        private void pictureWindowClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void pictureWindowNormal_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+        private void pictureWindowMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void textBoxTote_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetInfo(GetTote());
+            }
+        }
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            GetInfo(GetTote());
+        }
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+        // Customize
         public void initForm()
         {
             this.Location = new Point((int)(Screen.PrimaryScreen.Bounds.Width * .5 - this.Width * .5),
@@ -185,61 +125,6 @@ namespace NFLWarehouse.Forms
                 labelVersion.Text = "verison: Debug";
             }
         }
-        private void pictureWindowClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-            this.Close();
-        }
-        private void pictureWindowNormal_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-        }
-        private void pictureWindowMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-        private void pictureBoxScanin_Click(object sender, EventArgs e)
-        {
-            Navigate(sender);
-        }
-        private void pictureBoxShipping_Click(object sender, EventArgs e)
-        {
-            Navigate(sender);
-        }
-        private void textBoxTote_Enter(object sender, EventArgs e)
-        {
-            SetColorTextBoxSelected((TextBox)sender);
-        }
-        private void textBoxTote_Leave(object sender, EventArgs e)
-        {
-            SetColorTextBoxReleased((TextBox)sender);
-        }
-        private void buttonConfirm_Click(object sender, EventArgs e)
-        {
-            ActionScanout();
-        }
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-        }     
-
-        private void pictureSwitch_Click(object sender, EventArgs e)
-        {
-            ActionSwitch();
-        }
-        private void pictureBoxInfoCenter_Click(object sender, EventArgs e)
-        {
-            FrmInfoCenter frm = new FrmInfoCenter();
-            frm.Show();
-        }
-        // Customized
         private string GetTote()
         {
             return textBoxTote.Text;
@@ -248,6 +133,12 @@ namespace NFLWarehouse.Forms
         {
             textBoxTote.Clear();
             textBoxLocation.Clear();
+
+            labelTote.Text = "";
+            labelLocation.Text = "";
+            labelStatus.Text = "";
+            labelCreationDate.Text ="";
+            labelCreatedBy.Text ="";
         }
         public void blockForm()
         {
@@ -265,15 +156,12 @@ namespace NFLWarehouse.Forms
             buttonClear.Enabled = true;
             this.UseWaitCursor = false;
         }
-        private void SetColorTextBoxSelected(TextBox t)
-        {
-            t.BackColor = Color.Lime;
-        }
-        private void SetColorTextBoxReleased(TextBox t)
-        {
-            t.BackColor = SystemColors.Window;
-        }
-        #endregion  
+
+
+
+        #endregion
+
+      
 
         #region Window Movement
         Boolean Moveform;
@@ -353,11 +241,7 @@ namespace NFLWarehouse.Forms
                                           this.Location.Y + (e.Location.Y - Moveform_MousePosition.Y));
             }
         }
-
-
-
         #endregion
 
-       
     }
 }

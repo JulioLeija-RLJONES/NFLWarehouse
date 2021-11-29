@@ -63,7 +63,6 @@ namespace NFLWarehouse.Classes
             }
         }
         
-
         public async Task OpenAsync()
         {
             try
@@ -85,6 +84,11 @@ namespace NFLWarehouse.Classes
                 else if(commingFrom.Text.Contains("Shipping"))
                 {
                     NFLWarehouse.Forms.FrmShipping frm = (NFLWarehouse.Forms.FrmShipping)commingFrom;
+                    frm.releaseForm();
+                }
+                else if (commingFrom.Text.Contains("InfoCenter"))
+                {
+                    NFLWarehouse.Forms.FrmInfoCenter frm = (NFLWarehouse.Forms.FrmInfoCenter)commingFrom;
                     frm.releaseForm();
                 }
             }

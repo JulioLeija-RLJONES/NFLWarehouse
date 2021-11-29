@@ -257,7 +257,11 @@ namespace NFLWarehouse.Forms
         {
             Navigate(sender);
         }
-
+        private void pictureBoxInfoCenter_Click(object sender, EventArgs e)
+        {
+            FrmInfoCenter frm = new FrmInfoCenter();
+            frm.Show();
+        }
         // Custom
         private void SetColorTextBoxSelected(TextBox t)
         {
@@ -371,8 +375,9 @@ namespace NFLWarehouse.Forms
 
 
 
+
         #endregion
 
-        
+      
     }
 }

@@ -547,6 +547,84 @@ namespace NFLWarehouse.Classes
                 return 0;
             }
         }
+        public string GetCreationDate(int toteid)
+        {
+            try
+            {
+                string sql = String.Format("SELECT CreatedOn FROM dbo.tbl_NFLWarehouse_Tote WHERE ToteId = @toteid", toteid);
+                var parameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@toteid",toteid),
+                };
+                var rows = ExecuteReader(sql, parameters);
+
+                if (rows.Count > 0)
+                {
+                    return rows[0].FieldValues[0].ToString();
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return "";
+            }
+        }
+        public string GetCreatedBy(int toteid)
+        {
+            try
+            {
+                string sql = String.Format("SELECT CreatedBy FROM dbo.tbl_NFLWarehouse_Tote WHERE ToteId = @toteid", toteid);
+                var parameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@toteid",toteid),
+                };
+                var rows = ExecuteReader(sql, parameters);
+
+                if (rows.Count > 0)
+                {
+                    return rows[0].FieldValues[0].ToString();
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return "";
+            }
+        }
+        public string GetStatusName(int statusid)
+        {
+            try
+            {
+                string sql = String.Format("SELECT Name FROM dbo.tbl_NFLWarehouse_Master_Status WHERE StatusId = @StatusId", statusid);
+                var parameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@StatusId",statusid),
+                };
+                var rows = ExecuteReader(sql, parameters);
+
+                if (rows.Count > 0)
+                {
+                    return rows[0].FieldValues[0].ToString();
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return "";
+            }
+        }
         public int GetLocationId(int toteid)
         {
             try

@@ -37,3 +37,4 @@ C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\Syst
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.csproj.CopyComplete
 C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmShipping.resources
+C:\Users\jleija\source\git\NFLWarehouse\NFLWarehouse\NFLWarehouse\obj\Debug\NFLWarehouse.Forms.FrmInfoCenter.resources

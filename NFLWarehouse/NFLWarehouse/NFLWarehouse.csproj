@@ -30,7 +30,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>33</ApplicationRevision>
+    <ApplicationRevision>34</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -119,6 +119,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmInfoCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmInfoCenter.Designer.cs">
+      <DependentUpon>FrmInfoCenter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmReceiving.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmInfoCenter.resx">
+      <DependentUpon>FrmInfoCenter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmReceiving.resx">
       <DependentUpon>FrmReceiving.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +211,7 @@
     <None Include="icons\scanin.png" />
     <None Include="icons\scanout.png" />
     <None Include="icons\shipping.png" />
+    <None Include="icons\infocenter.png" />
     <Content Include="Tests\Tests.txt" />
     <None Include="icons\minimize_1.png" />
     <None Include="icons\maximize.png" />
