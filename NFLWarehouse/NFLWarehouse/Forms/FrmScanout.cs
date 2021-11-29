@@ -166,6 +166,8 @@ namespace NFLWarehouse.Forms
         }
         public void initForm()
         {
+            this.Location = new Point((int)(Screen.PrimaryScreen.Bounds.Width * .5 - this.Width * .5),
+                                      (int)(Screen.PrimaryScreen.Bounds.Height * .5 - this.Height * .5));
             CustomizeTitle();
             this.Text = toolName + " " + stationName;
             labelToolName.Text = this.toolName;
