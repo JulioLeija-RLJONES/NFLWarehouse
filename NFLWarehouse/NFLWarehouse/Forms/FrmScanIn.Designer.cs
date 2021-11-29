@@ -298,6 +298,7 @@ namespace NFLWarehouse.Forms
             // 
             // pictureWindowNormal
             // 
+            this.pictureWindowNormal.Enabled = false;
             this.pictureWindowNormal.Image = global::NFLWarehouse.Properties.Resources.maximize;
             this.pictureWindowNormal.Location = new System.Drawing.Point(980, 4);
             this.pictureWindowNormal.Name = "pictureWindowNormal";
