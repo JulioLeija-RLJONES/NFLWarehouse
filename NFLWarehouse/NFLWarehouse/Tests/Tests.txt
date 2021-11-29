@@ -136,4 +136,67 @@ Message: tote now floating.
 
 Result: Failed. Location did not update to 1, which is none.
 
+----------------------------------------------
+Test 11 : Scan in RFC-02110	 in location WH2-GRO-AL102 that does not exist..
 
+LocationIn	= 0
+StatusIn	= 0
+
+LocationOut = 4
+StatusOut	= 1
+
+Message: Location created.
+
+Result: Failed. Location got created but skipped tote allaction. 
+
+-----------------------------------------------
+Retest 11: Scan IN  RFC-02122 in location WH2-GRO-AR102 that does not exist
+
+LocationIn	= 0
+StatusIn	= 0
+
+LocationOut = 4
+StatusOut	= 1
+
+Message: Location created.
+
+Resutl: Failed. Created location, allocated tote but in location 1, which is none.
+
+-----------------------------------------------
+Retest 11: Scan IN  RFC-02108 in location WH2-GRO-AR103 that does not exist
+
+LocationIn	= 0
+StatusIn	= 0
+
+LocationOut = 6
+StatusOut	= 1
+
+Message: Location created.
+
+Resutl: Passed.
+
+-----------------------------------------------
+Test 12: Scan IN  REC-01865 in location WH2-GRO-AR101 that does exist
+
+LocationIn	= 1
+StatusIn	= 3
+
+LocationOut = 2
+StatusOut	= 1
+
+Message: Tote looping back from shipping.
+
+Resutl: Passed.
+
+-----------------------------------------------
+Test 13: Scan IN  RFC-01658 in location WH2-GRO-AL103 that does not exist
+
+LocationIn	= 1
+StatusIn	= 3
+
+LocationOut = 7
+StatusOut	= 1
+
+Message: Tote looping back from shipping.
+
+Resutl: Passed.

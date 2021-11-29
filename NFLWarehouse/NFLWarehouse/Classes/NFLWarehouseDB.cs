@@ -29,6 +29,7 @@ namespace NFLWarehouse.Classes
         string message9 = "Tote {0} is still allocated, if tote needs to be shipped, scan it out first.";
         string message10 = "Tote {0} is already Shipped!, notify supervisor about this Tote.";
         string message11 = "Tote {0} is looping back from Shipping status, allocating in {1}";
+        string message12 = "Location {0} created.";
         #endregion
 
         public NFLWarehouseDB(): base("nfl")
@@ -73,12 +74,10 @@ namespace NFLWarehouse.Classes
             }
             else
             {// Location is invalid, interrupt allocation transaction.
-                MsgTypes.printme(MsgTypes.msg_failure, String.Format(message1,location), commingFrom);
-
-                InsertTransaction(toteid, Tote, location, 0, 0, TransactionType.transactionTypeInsert, Dns.GetHostName(),
-                             GetStatusId(toteid), GetStatusId(toteid), Tools.GetLocalIPAddress(), TransactionType.Failed,version);
-
-                return false;
+                MsgTypes.printme(MsgTypes.msg_failure, String.Format(message12,location), commingFrom);
+                CreateLocation(location);
+                locationOut = GetLocationId(location);
+                //return false;
             }
             //Inserting tote.
             try
@@ -87,6 +86,7 @@ namespace NFLWarehouse.Classes
                 {// Tote in system, checking status
                     toteid = GetToteId(Tote);
                     locationIn = GetLocationId(Tote);
+
 
                     statusIn = GetStatusId(toteid);
                     if (IsToteFloating(Tote) || IsToteShipped(Tote))
@@ -211,6 +211,34 @@ namespace NFLWarehouse.Classes
             catch(Exception ex)
             {
                 InsertTransaction(toteid, Tote,"",locationIn, locationOut, transactionType, hostname, statusIn, statusOut, ip, TransactionType.Failed,version);
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+        public bool CreateLocation(string Location)
+        {
+            string sql;
+            try
+            {
+                // If tote is not created. Insert new record
+                sql = "INSERT INTO dbo.tbl_NFLWarehouse_Master_Location ";
+                sql += "VALUES(@Name,@CreatedOn,@CreatedBy)";
+
+
+                // Query parameters setup
+                var parameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@Name",Location),
+                    new SqlParameter("@CreatedOn",DateTime.Now),
+                    new SqlParameter("@CreatedBy",Dns.GetHostName())
+                };
+                ExecuteReader(sql, parameters);
+                InsertTransaction(0, "", Location, 0, 0, TransactionType.transactionTypeInsert, Dns.GetHostName(), 0, 0, Tools.GetLocalIPAddress(), TransactionType.Succeeded, version);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                InsertTransaction(0, "", Location, 0, 0, TransactionType.transactionTypeInsert, Dns.GetHostName(), 0, 0, Tools.GetLocalIPAddress(), TransactionType.Failed, version);
                 Console.WriteLine(ex);
                 return false;
             }
