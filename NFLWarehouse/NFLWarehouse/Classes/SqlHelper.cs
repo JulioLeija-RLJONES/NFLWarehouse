@@ -94,7 +94,8 @@ namespace NFLWarehouse.Classes
             }
             catch (Exception ex)
             {
-                MsgTypes.printme(MsgTypes.msg_success, message2, commingFrom);
+                MsgTypes.printme(MsgTypes.msg_failure, message2, commingFrom);
+                MsgTypes.printme(MsgTypes.msg_failure, ex.Message, commingFrom);
                 Console.WriteLine(message2);
                 Console.WriteLine(ex);
             }
